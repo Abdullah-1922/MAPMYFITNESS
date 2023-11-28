@@ -17,7 +17,7 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
-
+ console.log(from);
   const onSubmit = (data) => {
     console.log(data);
 
@@ -93,7 +93,7 @@ const Login = () => {
               </button>
             </div>
             <div className="w-fit mx-auto">
-              <SocialLogin></SocialLogin>
+              <SocialLogin link={from}></SocialLogin>
             </div>
           </form>
           <p className="w-fit  pb-4  mx-auto">
