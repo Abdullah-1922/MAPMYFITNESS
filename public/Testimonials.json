@@ -1,0 +1,38 @@
+[
+    {
+      "name": "John Doe",
+      "quote": "The Functional Training classes have transformed my fitness journey. I feel more energized and agile than ever before.",
+      "rating": 5,
+      "img": "url_to_john_doe_image.jpg"
+    },
+    {
+      "name": "Jane Smith",
+      "quote": "Strength Training at this platform has helped me build muscle and achieve my fitness goals. I love the variety of exercises!",
+      "rating": 4,
+      "img": "url_to_jane_smith_image.jpg"
+    },
+    {
+      "name": "Alice Johnson",
+      "quote": "Pilates has become an essential part of my routine. It not only strengthens my core but also brings a sense of calmness and balance.",
+      "rating": 5,
+      "img": "url_to_alice_johnson_image.jpg"
+    },
+    {
+      "name": "Bob Anderson",
+      "quote": "Yoga classes here have been a game-changer for my mental and physical well-being. I recommend it to everyone looking for inner peace.",
+      "rating": 5,
+      "img": "url_to_bob_anderson_image.jpg"
+    },
+    {
+      "name": "Eva Rodriguez",
+      "quote": "Dancing Workout is my favorite! It's not just a workout; it's a joyful experience that keeps me motivated and happy.",
+      "rating": 4.5,
+      "img": "url_to_eva_rodriguez_image.jpg"
+    },
+    {
+      "name": "Sophie Turner",
+      "quote": "The Pre and Post Natal Exercise classes provided excellent support during my pregnancy. I felt stronger and more prepared for motherhood.",
+      "rating": 4,
+      "img": "url_to_sophie_turner_image.jpg"
+    }
+  ]

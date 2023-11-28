@@ -1,0 +1,14 @@
+.active{
+    text-decoration: none;
+    position: relative;
+    color: black;
+}
+.active:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -3px; /* Adjust this value to control the distance below the text */
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid black; /* Set the thickness and color of the underline */
+  }

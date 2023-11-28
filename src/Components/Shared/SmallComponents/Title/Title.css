@@ -1,0 +1,35 @@
+@keyframes glowing {
+    0% {
+      background-position: 0% 50%;
+     
+    }
+    50% {
+      background-position: 100% 50%;
+     
+    }
+    100% {
+      background-position: 0% 50%;
+      
+    }
+  }
+
+  .glow {
+    position: relative;
+    background: linear-gradient(90deg, #8B4513, #f6c15fe7, #a4894a); /* Gradient from left to right */
+    background-size: 200% 200%; /* Increase the size to cover the entire area */
+    color: transparent; /* Make the text transparent to reveal the background gradient */
+    background-clip: text; /* Clip the background to the text */
+    animation: glowing 3s infinite;
+    display: inline-block; /* Ensure the gradient covers only the text area */
+  }
+
+  .glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    z-index: -1; /* Place the shadow behind the text */
+  }

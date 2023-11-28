@@ -1,0 +1,38 @@
+[
+    {
+      "classType": "Functional Training",
+      "headline": "Improve Your Functional Fitness",
+      "description": "Join our Functional Training classes to enhance your overall strength, flexibility, and agility. Incorporate dynamic movements into your routine for a functional and efficient workout experience.",
+      "img": "https://i.ibb.co/QcWxcKs/featuredclasses-1.jpg"
+    },
+    {
+      "classType": "Strength Training",
+      "headline": "Build Strength and Muscle",
+      "description": "Discover the benefits of Strength Training. Our classes focus on resistance exercises to help you build muscle, increase bone density, and boost your metabolism.",
+      "img": "https://i.ibb.co/tDDWkFT/featured-Classes-2.jpg"
+    },
+    {
+      "classType": "Pilates",
+      "headline": "Core Strength and Flexibility",
+      "description": "Experience the power of Pilates in improving your core strength and flexibility. Our Pilates classes emphasize controlled movements, proper breathing, and mindfulness for a holistic approach to fitness.",
+      "img": "https://i.ibb.co/whbGdJ3/featured-Classes-3.jpg"
+    },
+    {
+      "classType": "Yoga",
+      "headline": "Balance and Harmony",
+      "description": "Join our Yoga classes to find balance and harmony in both body and mind. Explore various yoga poses, breathing techniques, and meditation to promote relaxation, flexibility, and mental well-being.",
+      "img": "https://i.ibb.co/2Z245xP/featured-Classes-4.jpg"
+    },
+    {
+      "classType": "Dancing Workout",
+      "headline": "Fun and Energetic Dance Workouts",
+      "description": "Get ready to move and groove in our Dancing Workout classes. Enjoy fun and energetic dance routines that not only improve cardiovascular health but also lift your spirits and make fitness enjoyable.",
+      "img": "https://i.ibb.co/6wGz112/Featured-Classes-5.jpg"
+    },
+    {
+      "classType": "Pre and Post Natal Exercise",
+      "headline": "Nurture Your Well-being",
+      "description": "Our Pre and Post Natal Exercise classes are designed to support expecting and new mothers. Experience gentle exercises and stretches that focus on maintaining strength, flexibility, and overall well-being during and after pregnancy.",
+      "img": "https://i.ibb.co/wLMWrmb/featured-Classes-6.jpg"
+    }
+  ]
