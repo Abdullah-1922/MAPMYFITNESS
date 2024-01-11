@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unknown-property */
 import { Link } from "react-router-dom";
 import TitleText from "../../Components/Shared/SmallComponents/Title/Title";
-
+import  "../Home/BlogHome.css"
 const BlogHome = () => {
     return (
-        <div className="pb-20">
+        <div className="pb-20 ">
            <TitleText heading={'Highlights of recent Community'}></TitleText>
              <div className="flex p-5 flex-col md:flex-row items-center ">
                 <div className="w-[320px]  md:w-[450px] lg:w-[550px] ">

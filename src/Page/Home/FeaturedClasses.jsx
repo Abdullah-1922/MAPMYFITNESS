@@ -28,7 +28,7 @@ const FeaturedClasses = () => {
       });
   }
   return (
-    <div className="pb-20">
+    <div className="pb-10">
         
         <TitleText heading={'OUR FEATURED CLASSES'}></TitleText>
       <Swiper

@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthContextProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
   const {
     register,
@@ -41,6 +42,7 @@ const Login = () => {
 
   return (
     <div className="  min-h-screen ">
+      <Helmet><title>LOGIN</title></Helmet>
         <div className="w-fit mx-auto text-center mt-10">
         <h1 className="text-5xl  font-bold">Login now!</h1>
           <p className="py-6">

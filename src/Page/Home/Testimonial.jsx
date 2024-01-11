@@ -15,7 +15,7 @@ const Testimonial = () => {
       .then((data) => setReviews(data));
   }, []);
   return (
-    <div className="pb-20">
+    <div className="p-10 pb-32 text-white reviewImg">
       <TitleText
         heading={"OUR USERS SAYS"}
         subtitle={"Testimonial"}

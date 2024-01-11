@@ -61,20 +61,20 @@ const navigate=useNavigate()
   
   }
     return (
-        <div>
+        <div className="dark:bg-slate-800">
         <Helmet>
           <title>MAPMYFITNESS | SignUp</title>
         </Helmet>
-         <div className="hero min-h-screen bg-base-200">
+         <div className="hero min-h-screen ">
           <div className="hero-content flex flex-col md:flex-row">
-            <div className="text-center md:w-1/2 lg:text-left">
+            <div className="text-center   lg:text-left">
               <h1 className="text-5xl font-bold">Sign Up now!</h1>
               <p className="py-6">
                 Sign up to get access to all the features of MAPMYFITNESS.
-                
+
               </p>
             </div>
-            <div className="card md:w-1/2 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className="card w-full  dark:bg-slate-600 bg-green-100">
               <form   onSubmit={handleSubmit(onSubmit)} className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -149,8 +149,8 @@ const navigate=useNavigate()
                   
                 </div>
               </form>
-              <p  className="w-fit pb-4 mx-auto">
-                Have an account <Link to={"/login"}>Login</Link>
+              <p  className="w-fit dark:text-black pb-4 mx-auto">
+                Have an account <Link to={"/login"} className="text-red-500 font-bold">Login</Link>
               </p>
             </div>
           </div>
