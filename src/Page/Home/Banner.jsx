@@ -4,7 +4,7 @@ const Banner = () => {
     return (
       <div className="relative">
         <div
-          className="hero h-[618px] lg:rounded-2xl lg:h-[750px]"
+          className="hero h-[618px]  lg:h-[750px]"
           style={{ backgroundImage: "url(https://i.ibb.co/LQ07g5g/BANNER.jpg)" }}
         >
           <div className="hero-overlay bg-opacity-10"></div>

@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
+import axiosPublic from "../API/axiosPublic";
+
 
 const useLoadBlog = ({page,size}) => {
-   const axiosPublic =useAxiosPublic()
- console.log(page,size,'in hook;')
+  
+ console.log(page,size,'in hook')
    const {data:blogs=[],isLoading,refetch }=useQuery({
     queryKey: ['blog',page,size],
     

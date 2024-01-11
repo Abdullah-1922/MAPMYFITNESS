@@ -1,19 +1,20 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthContextProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useLoadBlog from '../../Hooks/useLoadBlog';
 import { MdArrowRightAlt } from 'react-icons/md';
 import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
 import '../../Components/Shared/SharedCss/Scrollbar.css';
 import { Helmet } from 'react-helmet-async';
-import useAxiosPublic from '../../Hooks/useAxiosPublic';
+
 import './BlogCard.css';
+import axiosPublic from '../../API/axiosPublic';
 const Blog = () => {
-  const axiosPublic = useAxiosPublic();
+  
   const [count, setCount] = useState('');
   useEffect(() => {
     axiosPublic.get('/blogsCount').then((res) => setCount(res.data.count));
-  }, [axiosPublic]);
+  }, []);
   const formattedDate = (date) => {
     return new Date(date).toLocaleDateString('en-GB');
   };
@@ -34,6 +35,9 @@ const Blog = () => {
     refetch();
   }, [currentPage, refetch]);
   console.log(blogs);
+
+   const navigate =useNavigate()
+
   return (
     <div className='mb-20'>
       <Helmet>
@@ -49,58 +53,55 @@ const Blog = () => {
       </div>
       <div className='grid   px-5 md:px-2 grid-cols-1 gap-8 md:grid-cols-2 '>
         {blogs.map((blog) => (
-          <div  key={blog?._id}
-          className='h-[600px] overflow-y-hidden  w-full '
-          >
-          <div
-            className='overflow-x-hidden group group-hover:scale-90 transition relative cardBg  overflow-y-hidden  px-8 py-4 rounded-2xl border-2  '
-           >
-            <div className='flex justify-start  border-b border-black  items-center '>
-              <img
-                className='w-12 h-12 mr-5 rounded-full'
-                src={blog?.userProfilePic}
-                alt=''
-              />
-              <div className=''>
-                <p className='text-lg font-semibold'>{blog.name}</p>
-                <div className='text-[14px]'>
-                  <p>{blog?.email}</p>
-                  <p>Published on. {formattedDate(blog?.date)}</p>
+          <div key={blog?._id} className='h-[600px] overflow-y-hidden  w-full '>
+            <div className='overflow-x-hidden group group-hover:scale-90 transition relative cardBg  overflow-y-hidden  px-8 py-4 rounded-2xl border-2  '>
+              <div className='flex justify-start  border-b border-black pb-1 items-center '>
+                <img
+                  className='w-12 h-12 mr-5 rounded-full'
+                  src={blog?.userProfilePic}
+                  alt=''
+                />
+                <div >
+                  <p className='text-lg font-semibold'>{blog.name}</p>
+                  <div className='text-[14px]'>
+                    {/* <p>{blog?.email}</p> */}
+                    <p>Published on. {formattedDate(blog?.date)}</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className='mt-6 '>
-              <h3 className='font-bold pb-4 text-lg'>
-                <span>Title :</span> {blog.title.slice(0,60)}
-              </h3>
-              <div className='w-full h-[360px]  '>
-                <img
-                  className='  object-cover 
+              <div className='mt-6 '>
+                <h3 className='font-bold pb-4 text-lg'>
+                  <span>Title :</span> {blog.title.slice(0, 60)}
+                </h3>
+                <div className='w-full h-[360px]  '>
+                  <img
+                    className='  object-cover 
                 h-full 
                 w-full 
                
                '
-                  src={blog?.blogImage}
-                  alt=''
-                />
-              </div>
-              <div className='mt-5 flex'>
-                <div>
-                  <MdArrowRightAlt className='text-2xl '></MdArrowRightAlt>
+                    src={blog?.blogImage}
+                    alt=''
+                  />
                 </div>
-                {blog.blogDetail.slice(0, 50)}......
+                <div className='mt-5 flex'>
+                  <div>
+                    <MdArrowRightAlt className='text-2xl '></MdArrowRightAlt>
+                  </div>
+                  {blog.blogDetail.slice(0, 50)}......
+                </div>
+              </div>
+              <div className='absolute left-0 h-full w-full bg-black/30 -bottom-10 group-hover:bottom-0   flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300'>
+                <button
+                  className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'
+                  onClick={() => navigate(`/blog/${blog._id}`)}
+                >
+                  Go to details
+                </button>
               </div>
             </div>
-            <div className='absolute left-0 h-full w-full bg-black/30 -bottom-10 group-hover:bottom-0   flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300'>
-              <button
-                className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'
-                // onClick={() => goToDetails(blog._id)}
-              >
-                Go to details
-              </button>
-            </div>
-          </div></div>
+          </div>
         ))}
       </div>
 

@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
-import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import useAxiosPublic from '../../API/axiosPublic';
 
 const NewsLetter = () => {
 const axiosPublic =useAxiosPublic()

@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthContextProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosPublic from "../../API/axiosPublic";
 import SocialLogin from "../Login/SocialLogin";
 
 
