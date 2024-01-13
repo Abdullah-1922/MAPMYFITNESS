@@ -9,8 +9,9 @@ import { Helmet } from 'react-helmet-async';
 
 import './BlogCard.css';
 import axiosPublic from '../../API/axiosPublic';
+
+import DisplayTotalLikes from '../../Components/Shared/DisplayTotalLikes';
 const Blog = () => {
-  
   const [count, setCount] = useState('');
   useEffect(() => {
     axiosPublic.get('/blogsCount').then((res) => setCount(res.data.count));
@@ -32,11 +33,11 @@ const Blog = () => {
   // eslint-disable-next-line no-unused-vars
   const { user } = useContext(AuthContext);
   useEffect(() => {
+    window.scrollTo(0, 0);
     refetch();
   }, [currentPage, refetch]);
-  console.log(blogs);
 
-   const navigate =useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className='mb-20'>
@@ -55,24 +56,28 @@ const Blog = () => {
         {blogs.map((blog) => (
           <div key={blog?._id} className='h-[600px] overflow-y-hidden  w-full '>
             <div className='overflow-x-hidden group group-hover:scale-90 transition relative cardBg  overflow-y-hidden  px-8 py-4 rounded-2xl border-2  '>
-              <div className='flex justify-start  border-b border-black pb-1 items-center '>
-                <img
-                  className='w-12 h-12 mr-5 rounded-full'
-                  src={blog?.userProfilePic}
-                  alt=''
-                />
-                <div >
-                  <p className='text-lg font-semibold'>{blog.name}</p>
-                  <div className='text-[14px]'>
-                    {/* <p>{blog?.email}</p> */}
-                    <p>Published on. {formattedDate(blog?.date)}</p>
+              <div className='flex justify-between border-b border-black pb-1 items-center '>
+                <div className='flex items-center'>
+                  <img
+                    className='w-12 h-12 mr-5 rounded-full'
+                    src={blog?.userProfilePic}
+                    alt=''
+                  />
+                  <div>
+                    <p className='text-lg font-semibold'>{blog?.name}</p>
+                    <div className='text-[14px]'>
+                      <p>Published on. {formattedDate(blog?.date)}</p>
+                    </div>
                   </div>
+                </div>
+                <div>
+                  <DisplayTotalLikes id={blog?._id} />
                 </div>
               </div>
 
               <div className='mt-6 '>
                 <h3 className='font-bold pb-4 text-lg'>
-                  <span>Title :</span> {blog.title.slice(0, 60)}
+                  <span>Title :</span> {blog?.title.slice(0, 60)}
                 </h3>
                 <div className='w-full h-[360px]  '>
                   <img
@@ -92,12 +97,30 @@ const Blog = () => {
                   {blog.blogDetail.slice(0, 50)}......
                 </div>
               </div>
-              <div className='absolute left-0 h-full w-full bg-black/30 -bottom-10 group-hover:bottom-0   flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300'>
+              <div className='absolute left-0 h-full w-full bg-black/30 -bottom-10 group-hover:bottom-0   flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-800'>
                 <button
-                  className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'
-                  onClick={() => navigate(`/blog/${blog._id}`)}
-                >
-                  Go to details
+                  onClick={() => navigate(`/blog/${blog?._id}`)}
+                  className='group relative inline-flex items-center overflow-hidden rounded bg-indigo-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500'>
+                  <span className='absolute -start-full transition-all group-hover:start-4'>
+                    <svg
+                      className='h-5 w-5 rtl:rotate-180'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'>
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='2'
+                        d='M17 8l4 4m0 0l-4 4m4-4H3'
+                      />
+                    </svg>
+                  </span>
+
+                  <span className='text-sm font-medium transition-all group-hover:ms-4'>
+                    {' '}
+                    GO TO DETAILS{' '}
+                  </span>
                 </button>
               </div>
             </div>

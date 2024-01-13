@@ -56,17 +56,21 @@ const FeaturedClasses = () => {
        
         {classes?.map((item) => (
           <SwiperSlide key={item.classType}>
-            <div className="fitness-card  relative overflow-hidden rounded-lg ">
+          
+            <div className="fitness-card   relative overflow-hidden rounded-lg ">
               <div
-                className="card-bg   h-[600px] bg-cover bg-center"
+                className="card-bg   h-[600px]  bg-cover bg-center"
                 style={{ backgroundImage: `url(${item?.img})` }}
-              ></div>
-              <div className="card-content text-white absolute  left-20 bottom-10  text-center ">
+              >
+                  <div className="bg-black w-full h-full bg-opacity-20"></div>
+              </div>
+            
+              <div className="card-content text-white absolute   justify-center items-center top-[60%] left-[30%] text-center ">
                 <h3 className="text-2xl  my-3 font-black">{item?.classType}</h3>
                
                 <button onClick={()=>handleShowDetails(item)} className="btn hover:bg-slate-400 hover:border-none hover:scale-110">MORE INFO <FaArrowRight className="text-xl"></FaArrowRight></button>
-              </div>
-            </div>
+             
+            </div></div>
           </SwiperSlide>
         ))}
       </Swiper>

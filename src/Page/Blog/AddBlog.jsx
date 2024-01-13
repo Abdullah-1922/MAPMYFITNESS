@@ -24,14 +24,14 @@ const AddBlog = () => {
     const userProfilePic = user?.photoURL;
     const title = e.target.title.value;
     const image = e.target.image.files[0];
-     const imgURL= await imageUpload(image)
+     const blogImage= await imageUpload(image)
     const date = new Date();
-     console.log(imgURL);
-    const blog = { name, email, blogDetail, userProfilePic, title ,blogImage: imgURL.data.display_url,date};
-    console.log(blog);
+     console.log(blogImage);
+    const blog = { name, email, blogDetail, userProfilePic, title ,blogImage,date};
+    
    try{
    const data =await addBlog(blog)
-      console.log(data);
+      
     if (data.insertedId) {
       setLoading(false)
       Swal.fire({
@@ -47,7 +47,6 @@ const AddBlog = () => {
     }
    }catch(err){
     console.log(err);
-   }finally{
     setLoading(false)
    }
     
@@ -123,7 +122,7 @@ const AddBlog = () => {
               <label
                 htmlFor='image'
                 className='block text-sm font-medium text-gray-700'>
-                Choose a cute image
+                Choose an image
               </label>
               <input
                 type='file'
@@ -138,12 +137,12 @@ const AddBlog = () => {
                   <img
                     src={selectedImage}
                     alt='Selected'
-                    className='max-w-full h-auto rounded-md'
+                    className='max-w-full  max-h-[400px] rounded-md'
                   />
                 </div>
               )}
             </div>
-            <button disabled={loading} className='btn bg-green-300 mt-10'>{
+            <button type='submit' disabled={loading} className='btn bg-green-300 mt-10'>{
     loading ? <Loader/> 
     : 'Add Blog'
 

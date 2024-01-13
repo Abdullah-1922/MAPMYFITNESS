@@ -17,16 +17,17 @@ const Navbar = () => {
   const NavLi = (
     <>
       <NavLink to={"/"}>
-        <li className="dark:text-white text-black  font-bold">HOME</li>
+        <li className="dark:text-white uppercase text-black  font-bold">HOME</li>
       </NavLink>
       <NavLink to={"/blog"}>
         <li className="dark:text-white uppercase text-black font-bold">
           Community
         </li>
       </NavLink>
-      <NavLink to={"/order/salad"}>
-        <li className="dark:text-white text-black font-bold">ORDER</li>
+      <NavLink to={"/gallery"}>
+        <li className="dark:text-white uppercase text-black font-bold">Gallery</li>
       </NavLink>
+
       {/* {user && isAdmin && (
             <NavLink to={"/dashboard/adminHome"}>
               <li className="lg:text-white text-black font-semibold">Dashboard</li>

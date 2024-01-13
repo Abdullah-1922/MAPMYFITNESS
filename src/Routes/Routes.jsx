@@ -11,6 +11,7 @@ import Blog from "../Page/Blog/Blog";
 import PrivateRoute from "./PrivateRoute";
 import BeTrainer from "../Page/BeTrainer/BeTrainer";
 import BlogDetails from "../Page/Blog/BlogDetails";
+import Gallery from "../Page/Gallery/Gallery";
 
 
   export const router =createBrowserRouter([
@@ -45,6 +46,10 @@ import BlogDetails from "../Page/Blog/BlogDetails";
             {
                 path:'blog/:id',
                 element:<BlogDetails></BlogDetails>
+            },
+            {
+                path:'/gallery',
+                element:<Gallery></Gallery>
             }
         ]
     }

@@ -5,7 +5,8 @@ import { PiHeartStraightFill } from 'react-icons/pi';
 import { Helmet } from 'react-helmet-async';
 import useAuth from '../../Hooks/useAuth';
 import { useBlogLikeCount } from '../../Hooks/useBlogLikeCount';
-
+import {  toast } from 'react-toastify';
+import axiosPublic from '../../API/axiosPublic';
 const BlogDetails = () => {
   const { id } = useParams();
   const {user}=useAuth()
@@ -13,6 +14,7 @@ const BlogDetails = () => {
  
   const [data, setData] = useState([]);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchData = async () => {
       try {
         const data = await getSingleBlog(id);
@@ -26,22 +28,58 @@ const BlogDetails = () => {
   }, [id]);
   
   const {totalLikes,refetch}=  useBlogLikeCount(id)
-  console.log(totalLikes);
+ 
   
  const addLike =async(id)=>{
+    if(!user){
+        return toast("Please Login First", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: false,
+            theme: "light",
+            } )
+    }
    const data =await likeApi(id,user)
    setLike(true)
    refetch()
    console.log(data);
  }
  const removeLike =async(id)=>{
+    if(!user){
+        return toast("Please Login First", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: false,
+            theme: "light",
+            } )
+    }
    const data =await unLikeApi(id,user)
    setLike(false)
    refetch()
    console.log(data);
  }
 
-
+useEffect(()=>{
+   axiosPublic.get(`/checkLike/${id}?email=${user?.email}`).then(data=>{
+    console.log(data.data);
+    if(data.data){
+        setLike(true)
+    }else{
+        setLike(false)
+    }
+   }
+    
+    )
+  
+},[id,user])
 
 
   return (
@@ -61,14 +99,14 @@ const BlogDetails = () => {
           <p>{new Date(data?.date).toLocaleDateString('en-GB')}</p>
         </div>
       </div>
-      <div className='ml-20 flex items-center'>
+      <div className=' flex items-center'>
       {
         like ?    <button  onClick={()=>removeLike(id)} ><PiHeartStraightFill className='text-4xl text-purple-700'/></button> 
         :
         <button onClick={()=>addLike(id)} ><PiHeartStraightFill className='text-4xl'/></button> 
        
       }
-     <p className='text-xl p-2  ml-2'> like : {totalLikes ? totalLikes: '0'} </p>
+     <p className='text-xl p-1 px-2 border bg-violet-300 rounded-3xl ml-2'> like : {totalLikes ? totalLikes: '0'} </p>
      
       </div>
       
