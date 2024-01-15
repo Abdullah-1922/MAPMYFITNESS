@@ -6,21 +6,21 @@ import { CiCirclePlus } from 'react-icons/ci';
 import { BsFilePost } from "react-icons/bs";
 const CommonSidebar = () => {
   return (
-    <div className='flex flex-col gap-4'>
-      <NavLink className='flex justify-center gap-3 items-center' to={'/'}>
+    <div className='flex flex-col  gap-4'>
+      <NavLink className='flex ml-6 gap-3 items-center' to={'/'}>
         <p className='dark:text-black text-center uppercase text-black  font-bold'>
           Back to Home
         </p>
         <FaHome className=' text-2xl text-black' />
       </NavLink>
-      <NavLink className='flex justify-center gap-3 items-center' to={'/blog'}>
+      <NavLink className='flex ml-6 gap-3 items-center' to={'/blog'}>
         <p className='dark:text-black text-center uppercase text-black  font-bold'>
           Community Blog
         </p>
         <TbSocial className=' text-2xl text-black' />
       </NavLink>
       <NavLink
-        className='flex justify-center gap-3 items-center'
+        className='flex ml-6 gap-3 items-center'
         to={'/addBlog'}>
         <p className='dark:text-black text-center uppercase text-black  font-bold'>
           ADD Blog
@@ -28,7 +28,7 @@ const CommonSidebar = () => {
         <CiCirclePlus className=' text-2xl text-black' />
       </NavLink>
       <NavLink
-        className='flex justify-center gap-3 items-center'
+        className='flex ml-6 gap-3 items-center'
         to={'/addTrainer'}>
         <p className='dark:text-black text-center uppercase text-black  font-bold'>
           Apply For trainer

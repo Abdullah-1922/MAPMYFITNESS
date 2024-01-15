@@ -1,7 +1,7 @@
 
 import useAuth from '../../../Hooks/useAuth';
-import { useEffect, useState } from 'react';
-import { getUserInfo } from '../../../API/userApi';
+
+
 import AdminSidebar from './AdminSidebar';
 import CommonSidebar from './CommonSidebar';
 import { useGetLoginUser } from '../../../Hooks/useGetLoginUser';
@@ -16,7 +16,7 @@ const Sidebar = () => {
     <div className='w-[90%]   mx-auto'>
       
       <div className='min-w-[200px] mx-auto p-3 rounded-3xl bg-red-200 font-bold'>
-        <img className='w-12 mx-auto rounded-full' src={userInfo?.userPhoto} alt='' />
+        <img className='w-12 h-12 mx-auto rounded-full' src={userInfo?.userPhoto} alt='' />
         <p className=' text-center'>{userInfo?.userName}</p>
         <p className=' text-center'>{user?.email}</p>
         <p className=' text-center uppercase'>{userInfo?.role}</p>
@@ -30,7 +30,7 @@ const Sidebar = () => {
         userInfo?.role==='admin' && <AdminSidebar></AdminSidebar>
        }  
     </div>
-    <div className='mt-10 bg-blue-200 rounded-2xl py-10'>
+    <div className='mt-10 bg-blue-200  rounded-2xl py-10'>
        <CommonSidebar></CommonSidebar>
     </div>
    

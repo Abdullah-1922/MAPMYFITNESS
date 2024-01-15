@@ -9,10 +9,12 @@ import { imageUpload } from '../../API/ImageApi';
 import { addTrainer } from '../../API/TrainerApi';
 import { toast } from 'react-toastify';
 import Loader from '../../Components/Shared/SmallComponents/Loader';
+import { useGetLoginUser } from '../../Hooks/useGetLoginUser';
 
 const animatedComponents = makeAnimated();
 const BeTrainer = () => {
   const { user } = useAuth();
+  const {loginUser}=useGetLoginUser()
   const [skills, setSkill] = useState([]);
   const [selectedDays, setSelectedDays] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -28,9 +30,27 @@ const BeTrainer = () => {
   ];
   const bdTimeZone = 'Asia/Dhaka';
   const options = { timeZone: bdTimeZone };
+
   const handleSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
+    if(loginUser.trainerStatus ==='pending'
+      ){
+      return  Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please wait for admin Confirmation!',
+        })
+      }
+    if(loginUser.trainerStatus ==='verified'
+      ){
+      return  Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You are already a trainer!',
+        })
+      }
+    setLoading(true);
+    
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
