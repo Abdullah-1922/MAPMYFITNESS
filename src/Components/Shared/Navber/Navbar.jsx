@@ -27,6 +27,9 @@ const Navbar = () => {
       <NavLink to={"/gallery"}>
         <li className="dark:text-white uppercase text-black font-bold">Gallery</li>
       </NavLink>
+      <NavLink to={"/dashboard"}>
+        <li className="dark:text-white uppercase text-black font-bold">DashBoard</li>
+      </NavLink>
 
       {/* {user && isAdmin && (
             <NavLink to={"/dashboard/adminHome"}>
@@ -72,7 +75,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu space-y-2  dark:text-white bg-slate-600 dropdown-content mt-6 z-[1] p-2 shadow  rounded-box w-52"
+                className="menu space-y-2  dark:text-white bg-slate-500 dropdown-content mt-6 z-[1] p-2 shadow  rounded-box w-52"
               >
                 {NavLi}
               </ul>
@@ -90,7 +93,7 @@ const Navbar = () => {
           </div>
           <div className="navbar-end">
             <button onClick={changeTheme}>
-              {" "}
+              
               {mode == "light" ? (
                 <MdModeNight
                   className="text-3xl mx-3"
@@ -105,8 +108,8 @@ const Navbar = () => {
                 <div className="">
                   <div className=" ">
                     <img
-                      className="w-14  rounded-full "
-                      src={user?.photoURL}
+                      className="w-14 h-14  rounded-full "
+                      src={user.photoURL}
                       alt="Avatar"
                     />
                   </div>
@@ -115,14 +118,14 @@ const Navbar = () => {
                     onClick={handleLogOut}
                     className="dark:text-white text-black font-bold"
                   >
-                    {" "}
+                    
                     Logout
                   </button>
                 </div>
               </>
             ) : (
               <>
-                {" "}
+                
                 <Link to={"/login"}>
                   <button className="dark:text-white mr-2 text-black font-bold">
                     LOGIN

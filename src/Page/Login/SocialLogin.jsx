@@ -1,29 +1,58 @@
 import { FaGoogle } from "react-icons/fa6";
 
-import { useContext } from "react";
 
-// import useAxiosPublic from "../../Hooks/useAxiosPublic";
+
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthContextProvider";
+
+import useAuth from "../../Hooks/useAuth";
+import axiosPublic from "../../API/axiosPublic";
+import Swal from "sweetalert2";
 
 const SocialLogin = ({link}) => {
-  const { googleSignIn } = useContext(AuthContext);
-  // const axiosPublic =useAxiosPublic()
+  const { googleSignIn } = useAuth()
+  console.log(link);
+ 
   const navigate =useNavigate()
-  const handleGoogleLogin = () => {
-    googleSignIn()
-    .then((res) => {console.log(res)
-      navigate(link)
-    // const userInfo ={
-    //     email :res.user?.email,
-    //     name :res.user?.displayName,
-    // }
-    // axiosPublic.post('/users',userInfo)
-    // .then(res=>{
-    //     console.log(res.data);
-    //     navigate(link)
-    // })
-    });
+  const handleGoogleLogin =async () => {
+  const user = await googleSignIn()
+ const data= user.user
+   const userData ={
+    email: data.email,
+    role: 'user',
+    userFrom : new Date(),
+    lastLogin : new Date(),
+    userName : data.name,
+    userPhoto : data.displayname,
+    trainerStatus: 'not applied'
+   }
+   console.log(userData);
+
+try{
+   const res =  await  axiosPublic.put(`/users/${data.email}`,userData)
+   console.log(res);
+      
+console.log(res.data);
+if(res.data){
+
+  
+Swal.fire({
+  title: " login successfully",
+  text: "you can access all services",
+  icon: "success",
+  showConfirmButton: false,
+  timer: 1500,
+
+});
+
+navigate(`${link}`)
+
+}
+
+
+}catch(error){
+  console.log(error);
+}
+
   };
   
   return (

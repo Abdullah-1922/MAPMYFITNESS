@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import TitleText from "../../Components/Shared/SmallComponents/Title/Title";
 import { motion } from 'framer-motion';
 const Feature = () => {
@@ -67,14 +68,10 @@ const Feature = () => {
 
             <div className="px-10 flex-1 md:px-20 lg:pr-28">
               <h1 className="text-4xl font-bold">
-                Personal Trainer keeps you accountable
+              Fitness Redefined: Partnering with Progress
               </h1>
               <p className="py-6">
-                Your personal trainer will monitor your progression via video
-                sessions, hone your technique and help you move towards your
-                goal effectively and safely whilst having fun as you go. PT is
-                also the best motivation not to skip sessions or quit training
-                altogether.
+              Partnering with a personal fitness trainer goes beyond routines; it's a commitment to progress. Through video sessions, your trainer not only hones your technique but becomes a catalyst for motivation. Their watchful eye ensures effective and safe workouts, while the accountability they instill prevents the temptation to skip sessions. With a personal trainer, your fitness journey transforms into a dynamic, goal-driven adventure, guided by expertise and fueled by the motivation not to just exercise but to evolve.
               </p>
               
             </div>

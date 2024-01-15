@@ -52,7 +52,7 @@ const Blog = () => {
           </button>
         </Link>
       </div>
-      <div className='grid   px-5 md:px-2 grid-cols-1 gap-8 md:grid-cols-2 '>
+      <div className='grid   px-5 md:px-2 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
         {blogs.map((blog) => (
           <div key={blog?._id} className='h-[600px] overflow-y-hidden  w-full '>
             <div className='overflow-x-hidden group group-hover:scale-90 transition relative cardBg  overflow-y-hidden  px-8 py-4 rounded-2xl border-2  '>

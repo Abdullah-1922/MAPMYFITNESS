@@ -3,12 +3,12 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 import { app } from "../Firebase/Firebase.config";
 
 import axiosSecure from "../API/axiosSecure";
-import axiosPublic from "../API/axiosPublic";
+
 
 const auth = getAuth(app);
-export const AuthContext =createContext(null)
+export const AuthContext =createContext()
 const AuthContextProvider = ({children}) => {
-const [user ,setUser]=useState(null)
+const [user ,setUser]=useState('')
 const [loading ,setLoading]=useState(true)  
 const GoogleProvider  = new GoogleAuthProvider()
 
@@ -39,30 +39,20 @@ const updateUserProfile=(name,photo)=>{
 useEffect(()=>{
  const unsubscribe = onAuthStateChanged(auth,user=>{
     setUser(user)
+    if(!user){
+      setLoading(false)
+    }
     if(user){
       //get token 
       const userInfo ={email: user.email}
     axiosSecure.post('/jwt',userInfo)
-   const userData ={
-    email: user.email,
-    role: 'user',
-    userFrom : new Date(),
-    lastLogin : new Date(),
-   }
-
-
-    axiosPublic.put(`/users/:${user.email}`,userData).then(
-      data=> {
-        if(data){
-         setLoading(false) 
-        }
-      }
-    )
+   setLoading(false)
       
     }
+ 
    
     console.log('current user ' ,user);
-    
+     
   })
 
   return ()=>unsubscribe()

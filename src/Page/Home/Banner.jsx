@@ -2,26 +2,40 @@ import { FaArrowRight } from "react-icons/fa6";
 
 const Banner = () => {
     return (
-      <div className="relative">
-        <div
-          className="hero h-[618px]  lg:h-[750px]"
-          style={{ backgroundImage: "url(https://i.ibb.co/LQ07g5g/BANNER.jpg)" }}
-        >
-          <div className="hero-overlay bg-opacity-40"></div>
-          <div className="flex items-center justify-center text-center bg-black px-10 w-full  h-[618px] lg:h-[750px] lg:rounded-2xl  bg-opacity-10 text-neutral-content">
-            <div className="sm:w-4/5 lg:w-3/4 xl:w-2/3  bottom-20">
+      <section
+      className="relative bg-[url(https://i.ibb.co/LQ07g5g/BANNER.jpg)] bg-cover bg-center bg-no-repeat"
+    >
+      <div
+        className="absolute inset-0 bg-black  bg-opacity-50"
+      ></div>
+    
+      <div
+        className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
+      >
+        <div className="max-w-xl  text-center ltr:sm:text-left rtl:sm:text-right">
+          <h1 className="text-3xl text-white font-extrabold sm:text-5xl">
+          Reach your goals with 
+    
+            <strong className="block font-extrabold text-rose-700">MAPMYFITNESS  </strong>
+          </h1>
+    
+          <p className="mt-4 text-white max-w-lg sm:text-xl/relaxed">
+          Build healthy habits with the all-in-one food, exercise, and calorie tracker.
+          </p>
+    
+          <div className="mt-8 w-1/2 mx-auto text-center">
+            <a
+              href="#"
+              className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+            >
+              Get Started
+            </a>
+    
             
-              <h1 className="mb-5 text-2xl sm:text-4xl lg:text-5xl font-bold">
-                Reach your goals with <br /> MAPMYFITNESS
-              </h1>
-              <p className="mb-5 text-sm sm:text-base">
-                Build healthy habits with the all-in-one food, exercise, and calorie tracker.
-              </p>
-              <button className="btn hover:bg-slate-400 hover:border-none hover:scale-110">Get Started <FaArrowRight className="text-xl"></FaArrowRight></button>
-            </div>
           </div>
         </div>
       </div>
+    </section>
     );
   };
   

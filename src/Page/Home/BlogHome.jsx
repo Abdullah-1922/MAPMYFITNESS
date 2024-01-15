@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import axiosPublic from '../../API/axiosPublic';
 import { MdArrowRightAlt } from 'react-icons/md';
 import DisplayTotalLikes from '../../Components/Shared/DisplayTotalLikes';
+import { motion } from 'framer-motion';
 const BlogHome = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
@@ -18,7 +19,7 @@ const BlogHome = () => {
   };
   const navigate = useNavigate();
   return (
-    <div className='pb-20 '>
+    <div className='pb-20 overflow-hidden'>
       <TitleText heading={'Highlights of recent Community'}></TitleText>
       <div className='flex p-5 flex-col   '>
         <div className='pb-5 w-fit mx-auto'>
@@ -35,11 +36,16 @@ const BlogHome = () => {
           </div>
         </div>
         <div className='grid   px-5 md:px-2 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 '>
-          {blogs.map((blog) => (
-            <div
+          {blogs.map((blog,index) => (
+            <motion.div
+            initial={{ x: index % 2 === 0 ? -150 : 150, y: 0, opacity: 0 }}
+            whileInView={{opacity:1,x:0,y:0}}
+            
+            exit={{x:-150,opacity:0}}
+            transition={{ duration: .6 }}
               key={blog?._id}
-              className='h-[600px] overflow-y-hidden  w-full '>
-              <div className='overflow-x-hidden group group-hover:scale-90 transition relative cardBg  overflow-y-hidden  px-8 py-4 rounded-2xl border-2  '>
+             >
+              <div className='h-[600px] overflow-y-hidden  w-full  overflow-x-hidden group group-hover:scale-90 transition relative cardBg   px-8 py-4 rounded-2xl border-2  '>
                 <div className='flex justify-between border-b border-black pb-1 items-center '>
                   <div className='flex items-center'>
                     <img
@@ -108,7 +114,7 @@ const BlogHome = () => {
                   </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

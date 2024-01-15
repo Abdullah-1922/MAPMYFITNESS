@@ -6,6 +6,7 @@ input{
 }
 .custom-scrollbar-container {
     
+    overflow-x: scroll; /* Enable vertical scrollbar */
     overflow-y: scroll; /* Enable vertical scrollbar */
   
     /* WebKit browsers (Chrome, Safari) */

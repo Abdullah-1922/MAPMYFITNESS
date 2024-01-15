@@ -5,6 +5,8 @@ import Feature from "./Feature";
 import FeaturedClasses from "./FeaturedClasses";
 import NewsLetter from "./NewsLetter";
 import Testimonial from "./Testimonial";
+import DisplayFeatures from "./DisplayFeatures";
+import MostAskQue from "./MostAskQue";
 
 const Home = () => {
     return (
@@ -16,10 +18,12 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <Feature></Feature>
+            <DisplayFeatures></DisplayFeatures>
             <FeaturedClasses></FeaturedClasses>
             <Testimonial></Testimonial>
             <BlogHome></BlogHome>
             <NewsLetter></NewsLetter>
+            <MostAskQue></MostAskQue>
         </div>
     );
 };

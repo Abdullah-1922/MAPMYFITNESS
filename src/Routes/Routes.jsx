@@ -12,6 +12,10 @@ import PrivateRoute from "./PrivateRoute";
 import BeTrainer from "../Page/BeTrainer/BeTrainer";
 import BlogDetails from "../Page/Blog/BlogDetails";
 import Gallery from "../Page/Gallery/Gallery";
+import DashBoard from "../Roots/DashboardLayout/DashBoard";
+import AllUsers from "../Page/Dashboard/DashBoardContent/AdminComponents/AllUsers";
+import AllPendingTrainer from "../Page/Dashboard/DashBoardContent/AdminComponents/AllPendingTrainer";
+import AllVerifiedTrainer from "../Page/Dashboard/DashBoardContent/AdminComponents/AllVerifiedTrainer";
 
 
   export const router =createBrowserRouter([
@@ -52,5 +56,26 @@ import Gallery from "../Page/Gallery/Gallery";
                 element:<Gallery></Gallery>
             }
         ]
+    },
+    {
+        path:'/dashboard',
+        element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute> ,
+        children:[
+            
+            {
+                path:'allUser',
+                
+                element:<PrivateRoute><AllUsers></AllUsers></PrivateRoute>
+            },
+            {
+                path:'allPendingTrainer',
+                element:<AllPendingTrainer></AllPendingTrainer>
+            },
+            {
+                path:'allVerifiedTrainer',
+                element:<AllVerifiedTrainer></AllVerifiedTrainer>
+            }
+        ]
     }
+
   ])
