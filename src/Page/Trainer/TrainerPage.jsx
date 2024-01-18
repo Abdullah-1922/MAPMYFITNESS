@@ -1,53 +1,41 @@
 import { useNavigate } from 'react-router-dom';
-import { useGetAllClasses } from '../../Hooks/useGetAllClasses';
 import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
-
-const AllClasses = () => {
-  const { classes } = useGetAllClasses();
-  const navigate = useNavigate();
-
-  console.log(classes);
-
+import { useGetVerifiedTrainer } from '../../Hooks/useGetVerifiedTrainer';
+import {Helmet} from 'react-helmet-async'
+const TrainerPage = () => {
+  const { trainers } = useGetVerifiedTrainer();
+  const navigate =useNavigate()
+  console.log(trainers);
   return (
-    <div>
-      <TitleText heading={' All available classes '}></TitleText>
-      <div className='grid p-10 grid-cols-1 md:grid-cols-2 py-20 lg:grid-cols-3 gap-10'>
-        {classes?.map((singleClass, index) => (
-          <div
-            key={index}
-            className='card overflow-hidden  dark:bg-slate-700 bg-slate-200 shadow-xl'>
+    <div className='w-[90%] py-10 mx-auto'>
+      <Helmet>
+        <title>Trainers</title>
+      </Helmet>
+      <TitleText heading={'Our Expert Trainers'}></TitleText>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14'>
+        {trainers.map((trainer, index) => (
+          <div key={index} className='card   shadow-xl'>
             <div className='h-[400px] '>
               <img
                 className='w-full h-full object-cover '
-                src={singleClass.classImage}
+                src={trainer.profileImage}
                 alt='Shoes'
               />
             </div>
-            <div className=' space-y-1 mt-2 p-5 '>
-              <p className='  font-medium'>
-                Trainer : {singleClass.trainerName}
-              </p>
-              <p className=' font-medium'>Topic : {singleClass.classTopic}</p>
+            <div className='card-body'>
+              <h2 className='card-title'>{trainer.name}</h2>
               <p className=' font-medium'>
-                Days :
-                {singleClass?.classDays?.map(
+                Skills :
+                {trainer.skill.map(
                   (data, index) =>
                     data +
-                    (index < singleClass.classDays.length - 1 ? ', ' : '.'),
+                    (index < trainer.skill.length - 1 ? ', ' : '.'),
                 )}
               </p>
-
-              <p className='font-bold text-lg'>
-                Title : {singleClass.classTitle.slice(0, 50)}
-              </p>
-              <div className='card-actions justify-end'>
-                <div className='badge badge-outline'>
-                  {singleClass.classPrice}
-                </div>
-              </div>
-              <div className='w-fit mx-auto'>
-                <button
-                  onClick={() => navigate(`/class/${singleClass._id}`)}
+              <p className='text-lg font-semibold'>Available slot : {trainer.availableTimeDay}  </p>
+              <div className='card-actions justify-center'>
+              <button
+                  onClick={() => navigate(`/trainer/${trainer.email}`)}
                   className='group relative inline-flex items-center overflow-hidden rounded bg-indigo-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500'>
                   <span className='absolute -start-full transition-all group-hover:start-4'>
                     <svg
@@ -78,4 +66,4 @@ const AllClasses = () => {
   );
 };
 
-export default AllClasses;
+export default TrainerPage;

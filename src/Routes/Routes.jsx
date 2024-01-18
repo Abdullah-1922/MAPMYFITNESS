@@ -19,6 +19,9 @@ import AllVerifiedTrainer from "../Page/Dashboard/DashBoardContent/AdminComponen
 import ShowNewsLetterSubscribers from "../Page/Dashboard/DashBoardContent/AdminComponents/ShowNewsLetterSubscribers";
 import AddClasses from "../Page/Dashboard/DashBoardContent/TrainerComponents/AddClasses";
 import AllClasses from "../Page/Classes/AllClasses";
+import ClassDetails from "../Page/Classes/ClassDetails";
+import TrainerPage from "../Page/Trainer/TrainerPage";
+import TrainerDetails from "../Page/Trainer/TrainerDetails";
 
 
   export const router =createBrowserRouter([
@@ -61,6 +64,18 @@ import AllClasses from "../Page/Classes/AllClasses";
             {
                 path:'/allClasses',
                 element:<PrivateRoute><AllClasses></AllClasses></PrivateRoute>
+            },
+            {
+                path:'/class/:id',
+                element:<PrivateRoute><ClassDetails></ClassDetails></PrivateRoute>
+            },
+            {
+                path:'/trainerPage',
+                element:<PrivateRoute><TrainerPage></TrainerPage></PrivateRoute>
+            },
+            {
+                path:'/trainer/:email',
+                element:<PrivateRoute><TrainerDetails></TrainerDetails></PrivateRoute>
             }
         ]
     },

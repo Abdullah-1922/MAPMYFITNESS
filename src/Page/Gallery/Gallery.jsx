@@ -3,6 +3,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import {  useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import './gallery.css'
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -42,7 +43,11 @@ const Gallery = () => {
 
   return (
     <div className=' bgimg pt-10'>
-     
+       <Helmet>
+        <title>
+          Gallery
+        </title>
+       </Helmet>
         
         <div className='py-10 text-white w-[90%] mx-auto bg-blue-900'>
           <div className='text-center text-4xl font-bold '> GALLERY</div>

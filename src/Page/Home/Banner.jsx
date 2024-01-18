@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 
 
 const Banner = () => {
+  const navigate =useNavigate()
     return (
       <section
       className="relative bg-[url(https://i.ibb.co/LQ07g5g/BANNER.jpg)] bg-cover bg-center bg-no-repeat"
@@ -24,12 +26,12 @@ const Banner = () => {
           </p>
     
           <div className="mt-8 w-1/2 mx-auto text-center">
-            <a
-              href="#"
+            <button
+              onClick={()=>navigate("/allClasses")}
               className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
             >
               Get Started
-            </a>
+            </button>
     
             
           </div>

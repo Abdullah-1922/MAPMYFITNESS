@@ -26,7 +26,7 @@ const Blog = () => {
   console.log(count);
 
   const pages = [...Array(numberOfPages).keys()];
-  const { blogs, refetch } = useLoadBlog({
+  const { blogs, refetch ,isLoading} = useLoadBlog({
     page: currentPage,
     size: itemPerPage,
   });
@@ -38,6 +38,17 @@ const Blog = () => {
   }, [currentPage, refetch]);
 
   const navigate = useNavigate();
+  console.log(isLoading);
+  if (isLoading) {
+    return   (
+      <div className="flex flex-col gap-4 w-52">
+      <div className="skeleton h-32 w-full"></div>
+      <div className="skeleton h-4 w-28"></div>
+      <div className="skeleton h-4 w-full"></div>
+      <div className="skeleton h-4 w-full"></div>
+    </div>
+    )
+  }
 
   return (
     <div className='mb-20'>
@@ -158,6 +169,14 @@ const Blog = () => {
           Next
         </button>
       </div>
+      {
+        isLoading && <div className="flex flex-col gap-4 w-52">
+        <div className="skeleton h-32 w-full"></div>
+        <div className="skeleton h-4 w-28"></div>
+        <div className="skeleton h-4 w-full"></div>
+        <div className="skeleton h-4 w-full"></div>
+      </div>
+      }
     </div>
   );
 };
