@@ -7,6 +7,7 @@ import NewsLetter from "./NewsLetter";
 import Testimonial from "./Testimonial";
 import DisplayFeatures from "./DisplayFeatures";
 import MostAskQue from "./MostAskQue";
+import OurTrainers from "./OurTrainers";
 
 const Home = () => {
     return (
@@ -19,6 +20,7 @@ const Home = () => {
             <Banner></Banner>
             <Feature></Feature>
             <DisplayFeatures></DisplayFeatures>
+            <OurTrainers></OurTrainers>
             <FeaturedClasses></FeaturedClasses>
             <Testimonial></Testimonial>
             <BlogHome></BlogHome>

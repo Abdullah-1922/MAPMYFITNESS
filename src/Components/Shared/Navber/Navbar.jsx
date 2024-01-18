@@ -30,6 +30,9 @@ const Navbar = () => {
       <NavLink to={"/dashboard"}>
         <li className="dark:text-white uppercase text-black font-bold">DashBoard</li>
       </NavLink>
+      <NavLink to={"/allClasses"}>
+        <li className="dark:text-white uppercase text-black font-bold">Classes</li>
+      </NavLink>
 
       {/* {user && isAdmin && (
             <NavLink to={"/dashboard/adminHome"}>

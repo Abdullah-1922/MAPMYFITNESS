@@ -21,8 +21,9 @@ const SocialLogin = ({link}) => {
     role: 'user',
     userFrom : new Date(),
     lastLogin : new Date(),
-    userName : data.name,
-    userPhoto : data.displayname,
+    userName : data.displayname,
+    userPhoto : data.photoURL
+    ,
     trainerStatus: 'not applied'
    }
    console.log(userData);

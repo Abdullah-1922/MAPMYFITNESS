@@ -1,9 +1,10 @@
 import Swal from 'sweetalert2';
 import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
-import useAxiosPublic from '../../API/axiosPublic';
+import axiosPublic from '../../API/axiosPublic';
+
 
 const NewsLetter = () => {
-const axiosPublic =useAxiosPublic()
+
     const handleSubmit=e=>{
         e.preventDefault()
         console.log('submitted')

@@ -58,7 +58,7 @@ const DisplayFeatures = () => {
             whileInView={{opacity:1,x:0,y:0}}
             
             exit={{x:-150,opacity:0}}
-            transition={{ duration: .4 }}
+            transition={{ duration: .2, }}
             className=" bg-slate-900 p-8 text-gray-100 overflow-x-hidden  rounded-lg shadow-lg hover:scale-105 duration-300"
             key={index}>
                <div

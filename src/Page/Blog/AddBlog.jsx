@@ -1,17 +1,18 @@
-import { useContext, useState } from 'react';
+import {  useState } from 'react';
 import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
-import { AuthContext } from '../../Provider/AuthContextProvider';
+
 
 import Swal from 'sweetalert2';
 import { imageUpload } from '../../API/ImageApi';
 import { addBlog } from '../../API/BlogApi';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../Components/Shared/SmallComponents/Loader';
+import useAuth from '../../Hooks/useAuth';
 
 
 
 const AddBlog = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth()
    const navigate =useNavigate()
   const [selectedImage, setSelectedImage] = useState('');
   const [loading,setLoading]=useState(false)

@@ -16,6 +16,9 @@ import DashBoard from "../Roots/DashboardLayout/DashBoard";
 import AllUsers from "../Page/Dashboard/DashBoardContent/AdminComponents/AllUsers";
 import AllPendingTrainer from "../Page/Dashboard/DashBoardContent/AdminComponents/AllPendingTrainer";
 import AllVerifiedTrainer from "../Page/Dashboard/DashBoardContent/AdminComponents/AllVerifiedTrainer";
+import ShowNewsLetterSubscribers from "../Page/Dashboard/DashBoardContent/AdminComponents/ShowNewsLetterSubscribers";
+import AddClasses from "../Page/Dashboard/DashBoardContent/TrainerComponents/AddClasses";
+import AllClasses from "../Page/Classes/AllClasses";
 
 
   export const router =createBrowserRouter([
@@ -54,6 +57,10 @@ import AllVerifiedTrainer from "../Page/Dashboard/DashBoardContent/AdminComponen
             {
                 path:'/gallery',
                 element:<Gallery></Gallery>
+            },
+            {
+                path:'/allClasses',
+                element:<PrivateRoute><AllClasses></AllClasses></PrivateRoute>
             }
         ]
     },
@@ -74,6 +81,14 @@ import AllVerifiedTrainer from "../Page/Dashboard/DashBoardContent/AdminComponen
             {
                 path:'allVerifiedTrainer',
                 element:<AllVerifiedTrainer></AllVerifiedTrainer>
+            },
+            {
+                path:'newsletterSubscribers',
+                element:<ShowNewsLetterSubscribers></ShowNewsLetterSubscribers>
+            },
+            {
+                path:'addClass',
+                element:<AddClasses></AddClasses>
             }
         ]
     }

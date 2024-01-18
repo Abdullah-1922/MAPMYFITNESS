@@ -60,5 +60,15 @@ export const makeTrainerPending =async(email)=>{
         console.log(error);
     }
 }
+//news letter subscriber
+export const getAllNewsLetterSubscriber =async()=>{
+    try {
+        const {data} = await axiosSecure.get(`/newsLetterSubscriber`)
+     
+        return data;
+    } catch (error){
+        console.log(error);
+    }
+}
 
 

@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosPublic from "../API/axiosPublic";
 
-export const useGetVerifiedTrainer = () => {
-    const { data: trainers = [], refetch } = useQuery({
+export const useGetAllClasses = () => {
+    const { data:classes=[], refetch } = useQuery({
         queryKey: ['verifiedTrainer'],
         queryFn: async () => {
-            const res = await axiosPublic(`/getVerifiedTrainer`)
+            const res = await axiosPublic(`/getAllClasses`)
             return res.data;
         }
 
 
     })
-    return { trainers, refetch }
+    return { classes, refetch }
 };
 

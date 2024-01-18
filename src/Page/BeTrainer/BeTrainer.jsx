@@ -103,6 +103,10 @@ const BeTrainer = () => {
     };
     console.log(trainerInfo);
     const data = await addTrainer(trainerInfo);
+    if(data.insertedId
+      ){
+        toast.success('Trainer application successfully');
+      }
     console.log(data);
     if (data?.msg == 'Trainer already exist') {
       toast.error('Please wait for admin Confirmation');

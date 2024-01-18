@@ -3,6 +3,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 import { app } from "../Firebase/Firebase.config";
 
 import axiosSecure from "../API/axiosSecure";
+import axiosPublic from "../API/axiosPublic";
 
 
 const auth = getAuth(app);
@@ -46,6 +47,15 @@ useEffect(()=>{
       //get token 
       const userInfo ={email: user.email}
     axiosSecure.post('/jwt',userInfo)
+  
+
+  
+  
+       axiosPublic.put(`/user/${user.email}`)
+ 
+        
+
+  
    setLoading(false)
       
     }

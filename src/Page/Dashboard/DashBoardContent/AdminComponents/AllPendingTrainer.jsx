@@ -13,8 +13,9 @@ const AllTrainer = () => {
   const {trainers,refetch}=useGetPendingTrainer()
   const[trainerInfo,setTrainerInfo]=useState({})
   return (
-    <div className=" mt-10 p-8 dark:bg-stone-900">
-    <div className="  custom-scrollbar-container ">
+    <div className=" mt-10  custom-scrollbar-container p-8 dark:bg-stone-900">
+    <div className=" ">
+    <p className='text-3xl text-center py-6 font-bold uppercase'>All Pending trainers</p>
 <table className="table">
   {/* head */}
   <thead className="dark:text-white">
@@ -36,6 +37,7 @@ const AllTrainer = () => {
 
     </tr>
   </thead>
+  
   <tbody>
     {
      trainers?.map((trainer,index)=><tr key={index}>
@@ -94,6 +96,9 @@ const AllTrainer = () => {
   
   
 </table>
+{
+    trainers.length <1 ? <p className='text-center my-5 text-2xl'>No Trainer request pending</p>: ''
+  }
 </div>
  
 <AllPendingTrainerModal refetch={refetch} trainerInfo={trainerInfo}  isOpen={isOpen} closeModal={closeModal}></AllPendingTrainerModal>

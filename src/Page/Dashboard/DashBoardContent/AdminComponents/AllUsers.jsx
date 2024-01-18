@@ -15,7 +15,8 @@ const AllUsers = () => {
 
   return (
     <div className='dark:bg-stone-900 mt-10 p-8   overflow-x-auto'>
-      <div className='overflow-x-auto '>
+      <div className=''>
+        <p className='text-3xl text-center py-6 font-bold uppercase'>All Login Users</p>
         <table className='table'>
           {/* head */}
           <thead className='dark:text-white'>

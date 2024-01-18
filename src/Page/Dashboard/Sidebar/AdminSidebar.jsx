@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { FaUsersGear } from "react-icons/fa6";
 import { MdPending } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
+import { MdOutlineUnsubscribe } from "react-icons/md";
 const AdminSidebar = () => {
   return (
     <div className="flex flex-col gap-4">
@@ -13,6 +14,9 @@ const AdminSidebar = () => {
       </NavLink>
        <NavLink  className={'flex gap-3 items-center ml-6'}  to={"/dashboard/allVerifiedTrainer"}>
         <p className=" text-center uppercase text-black  font-bold"> Trainers </p><FaPeopleGroup className=" text-2xl text-black" />
+      </NavLink>
+       <NavLink  className={'flex gap-3 items-center ml-6'}  to={"/dashboard/newsletterSubscribers"}>
+        <p className=" text-center uppercase text-black  font-bold">NEWSLETTER subscriber </p><MdOutlineUnsubscribe className=" text-2xl text-black" />
       </NavLink>
     </div>
   );
