@@ -1,18 +1,29 @@
 import { useNavigate } from 'react-router-dom';
-import { useGetAllClasses } from '../../Hooks/useGetAllClasses';
-import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
+import { useGetLoginUser } from '../../../../Hooks/useGetLoginUser';
+import { useGetTrainerClass } from '../../../../Hooks/useGetTrainerClasses';
+import TitleText from '../../../../Components/Shared/SmallComponents/Title/Title';
+import { MdDelete } from 'react-icons/md';
 
-const AllClasses = () => {
-  const { classes } = useGetAllClasses();
-  const navigate = useNavigate();
 
-  console.log(classes);
+const MyAddedClasses = () => {const navigate = useNavigate();
+ const { loginUser } = useGetLoginUser();
+ 
+ const { trainerClasses  } = useGetTrainerClass(loginUser?.email);
 
+ 
+
+ 
+
+
+ 
+
+ 
+  
   return (
     <div>
-      <TitleText heading={' All available classes '}></TitleText>
-      <div className='grid p-10 grid-cols-1 md:grid-cols-2 py-20 lg:grid-cols-3 gap-10'>
-        {classes?.map((singleClass, index) => (
+      <TitleText heading={`My added classes `}></TitleText>
+      <div className='grid px-10 py-5 grid-cols-1 md:grid-cols-2   gap-10'>
+        {trainerClasses?.map((singleClass, index) => (
           <div
             key={index}
             className='card overflow-hidden  dark:bg-slate-700 bg-slate-200 shadow-xl'>
@@ -45,7 +56,7 @@ const AllClasses = () => {
                   {singleClass.classPrice}
                 </div>
               </div>
-              <div className='w-fit mx-auto'>
+              <div className=' flex gap-5 justify-center pt-4'>
                 <button
                   onClick={() => navigate(`/class/${singleClass?._id}`)}
                   className='group relative inline-flex items-center overflow-hidden rounded bg-indigo-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500'>
@@ -69,6 +80,17 @@ const AllClasses = () => {
                     Details
                   </span>
                 </button>
+                <button
+                  onClick={() => navigate(`/class/${singleClass?._id}`)}
+                  className='group relative inline-flex items-center overflow-hidden rounded bg-red-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500'>
+                  <span className='absolute -start-full transition-all group-hover:start-4'>
+                    <MdDelete className='text-2xl ' />
+                  </span>
+
+                  <span className='text-sm  font-bold transition-all group-hover:ms-4'>
+                    Delete
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -78,4 +100,4 @@ const AllClasses = () => {
   );
 };
 
-export default AllClasses;
+export default MyAddedClasses;

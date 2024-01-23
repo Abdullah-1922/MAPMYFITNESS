@@ -21,10 +21,12 @@ const SocialLogin = ({link}) => {
     role: 'user',
     userFrom : new Date(),
     lastLogin : new Date(),
-    userName : data.displayname,
-    userPhoto : data.photoURL
-    ,
-    trainerStatus: 'not applied'
+    userName : data.displayName,
+    userPhoto : data.photoURL,
+
+    
+    trainerStatus: 'not applied',
+    userStatus:'free'
    }
    console.log(userData);
 

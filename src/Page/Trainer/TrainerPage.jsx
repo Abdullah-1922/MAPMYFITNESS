@@ -13,12 +13,12 @@ const TrainerPage = () => {
       </Helmet>
       <TitleText heading={'Our Expert Trainers'}></TitleText>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14'>
-        {trainers.map((trainer, index) => (
+        {trainers?.map((trainer, index) => (
           <div key={index} className='card   shadow-xl'>
             <div className='h-[400px] '>
               <img
                 className='w-full h-full object-cover '
-                src={trainer.profileImage}
+                src={trainer?.profileImage}
                 alt='Shoes'
               />
             </div>
@@ -26,16 +26,16 @@ const TrainerPage = () => {
               <h2 className='card-title'>{trainer.name}</h2>
               <p className=' font-medium'>
                 Skills :
-                {trainer.skill.map(
+                {trainer?.skill?.map(
                   (data, index) =>
                     data +
-                    (index < trainer.skill.length - 1 ? ', ' : '.'),
+                    (index < trainer?.skill.length - 1 ? ', ' : '.'),
                 )}
               </p>
-              <p className='text-lg font-semibold'>Available slot : {trainer.availableTimeDay}  </p>
+              <p className='text-lg font-semibold'>Available slot : {trainer?.availableTimeDay}  </p>
               <div className='card-actions justify-center'>
               <button
-                  onClick={() => navigate(`/trainer/${trainer.email}`)}
+                  onClick={() => navigate(`/trainer/${trainer?.email}`)}
                   className='group relative inline-flex items-center overflow-hidden rounded bg-indigo-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500'>
                   <span className='absolute -start-full transition-all group-hover:start-4'>
                     <svg

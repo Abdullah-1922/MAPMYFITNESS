@@ -13,8 +13,9 @@ const Sidebar = () => {
      const  {loginUser:userInfo}= useGetLoginUser()
   
   console.log(userInfo);
+  console.log( userInfo?.trainerStatus);
   return (
-    <div className='  overflow-hidden mx-auto'>
+    <div className='  overflow  mx-auto'>
       
       <div className='min-w-[200px] mx-auto p-3 l bg-red-200 font-bold'>
         <img className='w-12 h-12 mx-auto rounded-full' src={userInfo?.userPhoto} alt='' />
@@ -25,15 +26,13 @@ const Sidebar = () => {
       {
 
         userInfo?.role==='admin' || userInfo?.trainerStatus ==='verified' ?   <div className='py-10 mt-10  bg-blue-200 flex flex-col gap-4'>
-         {/* <NavLink to={"/dashboard"}>
-        <li className="dark:text-white text-center uppercase text-black  font-bold">Dashboard</li>
-      </NavLink> */}
+        
     
        {
         userInfo?.role==='admin' && <AdminSidebar></AdminSidebar>
        }  
        {
-        userInfo?.trainerStatus ==='verified'&& <TrainerSidebar></TrainerSidebar>
+        userInfo?.trainerStatus ==='verified' && <TrainerSidebar></TrainerSidebar>
        }
     </div>: ''
       }

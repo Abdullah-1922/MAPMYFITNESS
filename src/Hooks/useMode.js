@@ -23,7 +23,7 @@ const useMode=()=>{
       setMode(currentMode);
       const html = document.documentElement;
       html.classList.add(currentMode);
-    }, []);
+    }, [mode]);
 
     return{changeTheme,mode}
 }

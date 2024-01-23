@@ -10,3 +10,10 @@ export const getClassInfo =async (id)=>{
 const {data}=await axiosSecure.get(`/getClassInfo/${id}`)
 return data
 }
+
+
+// user join classes . 
+export const joinClasses =async(email,id)=>{
+    const {data}=await axiosSecure.patch('/joinClasses',{email,id})
+    return data
+}

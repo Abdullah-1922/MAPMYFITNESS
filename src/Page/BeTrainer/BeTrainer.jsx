@@ -10,6 +10,7 @@ import { addTrainer } from '../../API/TrainerApi';
 import { toast } from 'react-toastify';
 import Loader from '../../Components/Shared/SmallComponents/Loader';
 import { useGetLoginUser } from '../../Hooks/useGetLoginUser';
+import { useNavigate } from 'react-router-dom';
 
 const animatedComponents = makeAnimated();
 const BeTrainer = () => {
@@ -18,7 +19,7 @@ const BeTrainer = () => {
   const [skills, setSkill] = useState([]);
   const [selectedDays, setSelectedDays] = useState([]);
   const [loading, setLoading] = useState(false);
-
+ const navigate =useNavigate()
   const optionsDays = [
     { value: 'Saturday', label: 'Saturday' },
     { value: 'Sunday', label: 'Sunday' },
@@ -105,6 +106,7 @@ const BeTrainer = () => {
     const data = await addTrainer(trainerInfo);
     if(data.insertedId
       ){
+        navigate('/')
         toast.success('Trainer application successfully');
       }
     console.log(data);

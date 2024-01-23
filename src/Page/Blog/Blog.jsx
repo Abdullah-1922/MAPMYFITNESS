@@ -26,7 +26,7 @@ const Blog = () => {
   console.log(count);
 
   const pages = [...Array(numberOfPages).keys()];
-  const { blogs, refetch ,isLoading} = useLoadBlog({
+  const { blogs, refetch, isLoading } = useLoadBlog({
     page: currentPage,
     size: itemPerPage,
   });
@@ -40,16 +40,16 @@ const Blog = () => {
   const navigate = useNavigate();
   console.log(isLoading);
   if (isLoading) {
-    return   (
-      <div className="flex flex-col gap-4 w-52">
-      <div className="skeleton h-32 w-full"></div>
-      <div className="skeleton h-4 w-28"></div>
-      <div className="skeleton h-4 w-full"></div>
-      <div className="skeleton h-4 w-full"></div>
-    </div>
-    )
+    return (
+      <div className='flex flex-col gap-4 w-52'>
+        <div className='skeleton h-32 w-full'></div>
+        <div className='skeleton h-4 w-28'></div>
+        <div className='skeleton h-4 w-full'></div>
+        <div className='skeleton h-4 w-full'></div>
+      </div>
+    );
   }
-
+ console.log(blogs);
   return (
     <div className='mb-20'>
       <Helmet>
@@ -69,11 +69,14 @@ const Blog = () => {
             <div className='overflow-x-hidden group group-hover:scale-90 transition relative cardBg  overflow-y-hidden  px-8 py-4 rounded-2xl border-2  '>
               <div className='flex justify-between border-b border-black pb-1 items-center '>
                 <div className='flex items-center'>
-                  <img
+                  <div>
+                    <img
                     className='w-12 h-12 mr-5 rounded-full'
-                    src={blog?.userProfilePic}
-                    alt=''
-                  />
+                    src={blog.userProfilePic}
+                    alt=''/>
+                  </div>
+                  
+                  
                   <div>
                     <p className='text-lg font-semibold'>{blog?.name}</p>
                     <div className='text-[14px]'>
@@ -129,8 +132,7 @@ const Blog = () => {
                   </span>
 
                   <span className='text-sm font-medium transition-all group-hover:ms-4'>
-                    {' '}
-                    GO TO DETAILS{' '}
+                    GO TO DETAILS
                   </span>
                 </button>
               </div>
@@ -169,14 +171,14 @@ const Blog = () => {
           Next
         </button>
       </div>
-      {
-        isLoading && <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
-      }
+      {isLoading && (
+        <div className='flex flex-col gap-4 w-52'>
+          <div className='skeleton h-32 w-full'></div>
+          <div className='skeleton h-4 w-28'></div>
+          <div className='skeleton h-4 w-full'></div>
+          <div className='skeleton h-4 w-full'></div>
+        </div>
+      )}
     </div>
   );
 };

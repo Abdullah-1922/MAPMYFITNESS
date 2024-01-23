@@ -42,6 +42,11 @@ const Navbar = () => {
           Classes
         </li>
       </NavLink>
+      <NavLink to={'/paymentPage'}>
+        <li className='dark:text-white uppercase text-black font-bold'>
+           our packages
+        </li>
+      </NavLink>
       <NavLink to={'/dashboard'}>
         <li className='dark:text-white uppercase text-black font-bold'>
           DashBoard
@@ -69,7 +74,7 @@ const Navbar = () => {
 
   const { mode, changeTheme } = useMode();
   return (
-    <div className=' dark:bg-slate-600'>
+    <div className=' dark:bg-slate-800'>
       <div onScroll={scroll} className=' text-black   '>
         <div className='navbar'>
           <div className='navbar-start'>

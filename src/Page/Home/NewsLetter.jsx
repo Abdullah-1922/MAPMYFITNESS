@@ -2,38 +2,35 @@ import Swal from 'sweetalert2';
 import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
 import axiosPublic from '../../API/axiosPublic';
 
-
 const NewsLetter = () => {
-
-    const handleSubmit=e=>{
-        e.preventDefault()
-        console.log('submitted')
-        const name =e.target.name.value
-        const email =e.target.email.value
-        const newsLetterSub={name,email}
-        console.log(newsLetterSub);
-        axiosPublic.post('/newsLetter',newsLetterSub)
-        .then(res=>{
-            if(res.data.insertedId){
-                Swal.fire({
-                    title: "Good job!",
-                    text: "Your subscribed successfully",
-                    icon: "success"
-                  });
-            }
-            console.log(res.data?.msg =='Already Subscribed')
-            if(res.data?.msg =='Already Subscribed'){
-                Swal.fire({
-                    title: "Already Subscribed",
-                    text: "You can not subscribe Twice",
-                    icon: "error"
-                  });
-            }
-        })
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submitted');
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const newsLetterSub = { name, email };
+    console.log(newsLetterSub);
+    axiosPublic.post('/newsLetter', newsLetterSub).then((res) => {
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: 'Good job!',
+          text: 'Your subscribed successfully',
+          icon: 'success',
+        });
+      }
+      console.log(res.data?.msg == 'Already Subscribed');
+      if (res.data?.msg == 'Already Subscribed') {
+        Swal.fire({
+          title: 'Already Subscribed',
+          text: 'You can not subscribe Twice',
+          icon: 'error',
+        });
+      }
+    });
+  };
 
   return (
-    <div className=' blogHomeBg'>
+    <div className='dark:border bg-blue-50 dark:bg-black'>
       <TitleText heading={'Subscribe for weekly newsletter'}></TitleText>
       <form onSubmit={handleSubmit}>
         <div className='w-full py-20 '>
@@ -41,7 +38,7 @@ const NewsLetter = () => {
             className='form-control 
          mx-auto w-2/3'>
             <div className='label'>
-              <span className='label-text'>Your Name</span>
+              <span className='label-text dark:text-white '>Your Name</span>
             </div>
             <input
               type='text'
@@ -56,7 +53,7 @@ const NewsLetter = () => {
             className='form-control 
          mx-auto w-2/3'>
             <div className='label'>
-              <span className='label-text'>Your Email</span>
+              <span className='label-text dark:text-white'>Your Email</span>
             </div>
             <input
               type='email'

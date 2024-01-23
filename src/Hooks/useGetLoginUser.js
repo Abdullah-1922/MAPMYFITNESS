@@ -5,15 +5,15 @@ import useAuth from "./useAuth"
 export const useGetLoginUser =()=>{
     const {user }=useAuth()
 
-    const {data:loginUser,refetch}=useQuery({
+    const {data:loginUser,refetch,isLoading}=useQuery({
         queryKey:['user',user],
         queryFn:async()=>{
-            const res =await axiosSecure.get(`/userInfo/${user.email}`)
+            const res =await axiosSecure.get(`/userInfo/${user?.email}`)
           
             return res.data
         }
 
     })
-    console.log(loginUser);
-    return {loginUser,refetch}
+   
+    return {loginUser,refetch,isLoading}
 }

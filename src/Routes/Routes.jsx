@@ -22,12 +22,17 @@ import AllClasses from "../Page/Classes/AllClasses";
 import ClassDetails from "../Page/Classes/ClassDetails";
 import TrainerPage from "../Page/Trainer/TrainerPage";
 import TrainerDetails from "../Page/Trainer/TrainerDetails";
+import TrainerClasses from "../Page/Trainer/TrainerClasses";
+import MyAddedClasses from "../Page/Dashboard/DashBoardContent/TrainerComponents/MyAddedClasses";
+import PaymentCart from "../Page/PaymentPage/PaymentCart";
+import ErrorPage from "../Page/ErrorPage";
 
 
   export const router =createBrowserRouter([
     {
         path:'/',
         element:<Root></Root>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/',
@@ -76,6 +81,14 @@ import TrainerDetails from "../Page/Trainer/TrainerDetails";
             {
                 path:'/trainer/:email',
                 element:<PrivateRoute><TrainerDetails></TrainerDetails></PrivateRoute>
+            },
+            {
+                path:'/trainerClasses/:email',
+                element:<PrivateRoute><TrainerClasses></TrainerClasses></PrivateRoute>
+            },
+            {
+                path:'/paymentPage',
+                element:<PaymentCart></PaymentCart>
             }
         ]
     },
@@ -103,7 +116,11 @@ import TrainerDetails from "../Page/Trainer/TrainerDetails";
             },
             {
                 path:'addClass',
-                element:<AddClasses></AddClasses>
+                element:<PrivateRoute><AddClasses></AddClasses></PrivateRoute>
+            },
+            {
+                path:'myAddedClasses',
+                element:<MyAddedClasses></MyAddedClasses>
             }
         ]
     }

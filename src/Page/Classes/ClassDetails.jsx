@@ -1,19 +1,47 @@
-import { useParams } from 'react-router-dom';
-import { getClassInfo } from '../../API/classesApi';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getClassInfo, joinClasses } from '../../API/classesApi';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useGetUSerStatus } from '../../Hooks/useGetUserStatus';
+import { useGetLoginUser } from '../../Hooks/useGetLoginUser';
+
 const ClassDetails = () => {
   const params = useParams();
-  console.log(params.id);
+  const navigate = useNavigate();
+
   const [data, setData] = useState({});
+   const {loginUser}=useGetLoginUser()
   useEffect(() => {
     getClassInfo(params.id).then((res) => setData(res));
   }, [params.id]);
-  console.log(data);
+ 
+  const { status } = useGetUSerStatus();
+ 
+
+  const handleJoinClass = async (id, price) => {
+    console.log(id);
+    console.log(price);
+    if (price === 'free') {
+      console.log('corse added successfully');
+       
+      joinClasses(loginUser?.email,id)
+      return;
+    } else if (price === 'silver' && (status === 'silver' || status ==='diamond')) {
+      console.log('corse added successfully');
+      return;
+    } else if (price === 'diamond' && status === 'diamond') {
+      console.log('corse added successfully');
+      return;
+    } else {
+      navigate('/paymentPage');
+    }
+  };
+
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   return (
     <div className='w-full '>
       <h5 className='text-3xl text-center font-bold border-b-2 px-5  text-red-500 border-black w-fit mx-auto'>
@@ -73,7 +101,7 @@ const ClassDetails = () => {
         </div>
         <div className='w-fit mt-6 mx-auto'>
           <button
-            //   onClick={()=>navigate(`/class/${singleClass._id}`)}
+            onClick={() => handleJoinClass(data?._id, data?.classPrice)}
             className='group relative inline-flex items-center overflow-hidden rounded bg-indigo-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500'>
             <span className='absolute -start-full transition-all group-hover:start-4'>
               <svg
@@ -92,7 +120,6 @@ const ClassDetails = () => {
             </span>
 
             <span className='text-sm font-medium transition-all group-hover:ms-4'>
-              
               Join
             </span>
           </button>

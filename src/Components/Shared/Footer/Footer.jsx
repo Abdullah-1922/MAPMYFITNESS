@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-center bg-black text-white p-10  ">
+            <footer className="footer dark:border-t footer-center bg-black text-white p-10  ">
   <aside>
  <img className="w-24 h-24" src="https://i.ibb.co/f2zG0RS/logo12footer.png" alt="" />
     <p className="font-bold">

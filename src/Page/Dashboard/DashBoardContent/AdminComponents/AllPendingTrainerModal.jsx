@@ -50,7 +50,7 @@ const AllPendingTrainerModal = ({
       if (result.isConfirmed) {
         const data = await rejectTrainer(trainer?.email);
         console.log(data);
-        if (data.deletedCount === 1) {
+        if (data.modifiedCount === 1) {
           Swal.fire({
             title: 'Trainer application removed',
             text: `${trainer.name} can apply again for trainer.`,
@@ -106,7 +106,7 @@ const AllPendingTrainerModal = ({
                         </button>
                       </div>
                     )}
-                    {trainerInfo.trainerStatus === 'pending' && (
+                    {trainerInfo?.trainerStatus === 'pending' && (
                       <div className='flex  pt-5 gap-10 w-fit mx-auto'>
                         <button
                           onClick={() => handleMakeTrainer(trainerInfo)}

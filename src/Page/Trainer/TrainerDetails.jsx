@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getTrainer } from '../../API/TrainerApi';
 import { Helmet } from 'react-helmet-async';
 
@@ -10,6 +10,7 @@ const TrainerDetails = () => {
     getTrainer(param.email).then((res) => setTrainerInfo(res));
   }, [param.email]);
   console.log(trainerInfo);
+  const navigate = useNavigate();
   return (
     <div>
       <Helmet>
@@ -30,13 +31,11 @@ const TrainerDetails = () => {
               {trainerInfo.name}
             </h2>
 
-            <div className='mt-4 text-gray-600'>
-                <p className='text-lg font-bold'>
-                     Email: {trainerInfo.email}
-                </p>
+            <div className='mt-4 text-gray-600 dark:text-white'>
+              <p className='text-lg font-bold'>Email: {trainerInfo.email}</p>
               <p className='text-lg font-medium'>
                 Expert of :
-                 <span className='ml-1' >
+                <span className='ml-1'>
                   {trainerInfo.skill?.map(
                     (data, index) =>
                       data +
@@ -45,7 +44,7 @@ const TrainerDetails = () => {
                 </span>
               </p>
               <p className='text-lg font-medium'>
-                AvailableTimeWeek : 
+                AvailableTimeWeek :
                 <span className='ml-1'>
                   {trainerInfo.availableTimeWeek?.map(
                     (data, index) =>
@@ -55,20 +54,18 @@ const TrainerDetails = () => {
                         : '.'),
                   )}
                 </span>
-
               </p>
               <div className='text-lg font-medium gap-2 flex'>
-               <p> Trainer from {trainerInfo.trainerFrom} ,</p>
-               <p>Age : {trainerInfo.age}</p>
+                <p> Trainer from {trainerInfo.trainerFrom} ,</p>
+                <p>Age : {trainerInfo.age}</p>
               </div>
-              <p>Available slot : {trainerInfo.availableTimeDay
-}</p>
+              <p>Available slot : {trainerInfo.availableTimeDay}</p>
             </div>
 
             <button
-              
+             onClick={() => navigate(`/trainerClasses/${trainerInfo.email}`)}
               className='mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400'>
-              See All Classe
+              See All Classes
             </button>
           </div>
         </div>
