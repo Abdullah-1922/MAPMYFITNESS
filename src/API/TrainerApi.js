@@ -19,8 +19,8 @@ export const getLoginTrainer = async(email)=>{
     console.log(data);
     return data
 }
-//add  forum in database
-export const addForum =async(data)=>{
-    const {data:res} =await axiosSecure.post('/addForum',data)
+//delete an class student 
+export const deleteJoinedStudent = async(data)=>{
+    const {data:res} =await axiosSecure.patch('/deleteJoinedStudent',data)
     return res
 }

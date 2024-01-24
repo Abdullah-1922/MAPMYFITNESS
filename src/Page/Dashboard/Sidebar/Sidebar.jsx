@@ -12,15 +12,15 @@ import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   const { user } = useAuth();
+  console.log(user);
      const  {loginUser:userInfo}= useGetLoginUser()
-  
-  console.log(userInfo);
-  console.log( userInfo?.trainerStatus);
+   console.log(userInfo);
+
   return (
     <div className='  overflow  mx-auto'>
       
       <div className='min-w-[200px] mx-auto p-3 l bg-red-200 font-bold'>
-        <img className='w-12 h-12 mx-auto rounded-full' src={userInfo?.userPhoto} alt='' />
+        <img className='w-12 h-12 mx-auto rounded-full' src={user?.photoURL} alt='' />
         <p className=' text-center'>{userInfo?.userName}</p>
         <p className=' text-center'>{user?.email}</p>
         <p className=' text-center uppercase'>{userInfo?.role}</p>

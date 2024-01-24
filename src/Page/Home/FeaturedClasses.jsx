@@ -45,11 +45,11 @@ const FeaturedClasses = () => {
         }}
       >
        
-        {homeClasses?.map((singleClass) => (
-          <SwiperSlide key={singleClass.classType}>
+        {homeClasses?.map((singleClass,index) => (
+          <SwiperSlide key={index}>
           
           <div
-            // key={index}
+           
             className='card overflow-hidden h-[660px] dark:bg-slate-700 bg-slate-200 shadow-xl'>
             <div className='h-[400px] '>
               <img

@@ -7,14 +7,15 @@ import { useNavigate } from "react-router-dom";
 import TitleText from "../../../../Components/Shared/SmallComponents/Title/Title";
 import Loader from "../../../../Components/Shared/SmallComponents/Loader";
 import { useGetLoginUser } from "../../../../Hooks/useGetLoginUser";
-import { addForum } from "../../../../API/TrainerApi";
+import { addForum } from "../../../../API/forumApi";
+
 
 const AddForums = () => {
     const { user } = useAuth()
    const navigate =useNavigate()
   const [selectedImage, setSelectedImage] = useState('');
   const [loading,setLoading]=useState(false)
-  const {loginUser}=useGetLoginUser()
+  const {loginUser=[]}=useGetLoginUser()
   const handleForumPost =async (e) => {
     // setLoading(true)
     e.preventDefault();

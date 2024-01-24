@@ -41,3 +41,9 @@ export const unLikeApi = async (id,user) => {
   const { data } = await axiosSecure.put(`/unlike`,info)
   return data
 }
+//my posted blog
+export const myBlog=async(email)=>{
+  const {data}=await axiosSecure.get(`/myBlogs/${email}`)
+  console.log(data);
+  return data
+}

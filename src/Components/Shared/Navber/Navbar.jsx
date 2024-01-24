@@ -1,19 +1,22 @@
-import { useContext } from 'react';
+
 import './Navbar.css';
 import { FiSun } from 'react-icons/fi';
 import { MdModeNight } from 'react-icons/md';
 import { Link, NavLink } from 'react-router-dom';
 import useMode from '../../../Hooks/useMode';
-import { AuthContext } from '../../../Provider/AuthContextProvider';
+
+import useAuth from '../../../Hooks/useAuth';
+import { useGetLoginUser } from '../../../Hooks/useGetLoginUser';
 // import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
-
+  const { user, logOut } = useAuth();
+  
+   const {loginUser}=useGetLoginUser()
   const handleLogOut = () => {
     logOut().then((res) => console.log(res));
   };
-
+console.log(loginUser);
   const NavLi = (
     <>
       <NavLink to={'/'}>
@@ -26,6 +29,14 @@ const Navbar = () => {
           Community
         </li>
       </NavLink>
+      
+      {((loginUser?.userStatus==='silver' || loginUser?.userStatus==='diamond' ) || (loginUser?.role==='admin' || loginUser?.trainerStatus==='verified') ) &&
+          <NavLink to={'/forumPage'}>
+          <li className='dark:text-white uppercase text-black font-bold'>
+             Premium forums
+          </li>
+        </NavLink>
+      }
       <NavLink to={'/gallery'}>
         <li className='dark:text-white uppercase text-black font-bold'>
           Gallery
@@ -47,7 +58,7 @@ const Navbar = () => {
            our packages
         </li>
       </NavLink>
-      <NavLink to={'/dashboard'}>
+      <NavLink to={loginUser?.role==='admin' ? '/dashboard/allUser' :'/dashboard/myPostedBlog'}   >
         <li className='dark:text-white uppercase text-black font-bold'>
           DashBoard
         </li>

@@ -1,24 +1,31 @@
+
+
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthContextProvider';
-import { Link, useNavigate } from 'react-router-dom';
-import useLoadBlog from '../../Hooks/useLoadBlog';
+import {  useNavigate } from 'react-router-dom';
+
 import { MdArrowRightAlt } from 'react-icons/md';
 import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
 import '../../Components/Shared/SharedCss/Scrollbar.css';
 import { Helmet } from 'react-helmet-async';
 
-import './BlogCard.css';
+
 import axiosPublic from '../../API/axiosPublic';
 
 import DisplayTotalLikes from '../../Components/Shared/DisplayTotalLikes';
-const Blog = () => {
+import useLoadForum from '../../Hooks/useLoadForum';
+import DisplayForumLike from './DisplayForumLike';
+
+const ForumPage = () => {
   const [count, setCount] = useState('');
   useEffect(() => {
-    axiosPublic.get('/blogsCount').then((res) => setCount(res.data.count));
+    axiosPublic.get('/forumsCount').then((res) => setCount(res.data.count));
   }, []);
   const formattedDate = (date) => {
     return new Date(date).toLocaleDateString('en-GB');
   };
+   
+  
 
   const [currentPage, setCurrentPage] = useState(0);
   const itemPerPage = 6;
@@ -26,7 +33,7 @@ const Blog = () => {
   console.log(count);
 
   const pages = [...Array(numberOfPages).keys()];
-  const { blogs, refetch, isLoading } = useLoadBlog({
+  const {forums,isLoading,refetch} = useLoadForum({
     page: currentPage,
     size: itemPerPage,
   });
@@ -49,49 +56,44 @@ const Blog = () => {
       </div>
     );
   }
- console.log(blogs);
+ console.log(forums);
   return (
     <div className='mb-20 -mt-10'>
       <Helmet>
-        <title>Community </title>
+        <title>Forum </title>
       </Helmet>
-      <TitleText heading={'Community Section'}></TitleText>
-      <div className='flex justify-end  my-4 mr-5'>
-        <Link to={'/addBlog'}>
-          <button className='btn hover:text-black  hover:bg-slate-400 bg-red-600 text-white  '>
-            ADD BLOG
-          </button>
-        </Link>
-      </div>
+      <TitleText heading={'Forum Section'}></TitleText>
+   
       <div className='grid   px-5 md:px-2 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
-        {blogs.map((blog) => (
-          <div key={blog?._id} className='h-[600px]  dark:border dark:border-white  overflow-y-hidden  w-full '>
+        {forums.map((forum) => (
+          <div key={forum?._id} className='h-[600px]  dark:border dark:border-white  overflow-y-hidden  w-full '>
             <div className='overflow-x-hidden group group-hover:scale-90 transition relative cardBg  overflow-y-hidden  px-8 py-4 rounded-2xl '>
               <div className='flex justify-between pb-1 items-center '>
                 <div className='flex items-center'>
                   <div>
                     <img
                     className='w-12 h-12 mr-5 rounded-full'
-                    src={blog.userProfilePic}
+                    src={forum.userProfilePic}
                     alt=''/>
                   </div>
                   
                   
                   <div>
-                    <p className='text-lg font-semibold'>{blog?.name}</p>
+                    <p className='text-lg font-semibold'>{forum?.name}</p>
                     <div className='text-[14px]'>
-                      <p>Published on. {formattedDate(blog?.date)}</p>
+                      <p>Published on. {formattedDate(forum?.date)}</p>
+                      <p className='text-blue-500 font-bold uppercase font-serif'>{forum?.publisherStatus} post</p>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <DisplayTotalLikes id={blog?._id} />
+                  <DisplayForumLike id={forum._id}></DisplayForumLike>
                 </div>
               </div>
 
               <div className='mt-6 '>
                 <h3 className='font-bold pb-4 text-lg'>
-                  <span>Title :</span> {blog?.title.slice(0, 60)}
+                  <span>Title :</span> {forum?.title.slice(0, 60)}
                 </h3>
                 <div className='w-full h-[360px]  '>
                   <img
@@ -100,7 +102,7 @@ const Blog = () => {
                 w-full 
                
                '
-                    src={blog?.blogImage}
+                    src={forum?.ForumImage}
                     alt=''
                   />
                 </div>
@@ -108,12 +110,12 @@ const Blog = () => {
                   <div>
                     <MdArrowRightAlt className='text-2xl '></MdArrowRightAlt>
                   </div>
-                  {blog.blogDetail.slice(0, 50)}......
+                  {forum.ForumDetail?.slice(0, 50)}......
                 </div>
               </div>
               <div className='absolute left-0 h-full w-full bg-black/30 -bottom-10 group-hover:bottom-0   flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-800'>
                 <button
-                  onClick={() => navigate(`/blog/${blog?._id}`)}
+                  onClick={() => navigate(`/forum/${forum?._id}`)}
                   className='group relative inline-flex items-center overflow-hidden rounded bg-indigo-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500'>
                   <span className='absolute -start-full transition-all group-hover:start-4'>
                     <svg
@@ -183,4 +185,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default ForumPage;

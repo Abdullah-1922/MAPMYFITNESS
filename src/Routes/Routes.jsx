@@ -28,8 +28,14 @@ import PaymentCart from "../Page/PaymentPage/PaymentCart";
 import ErrorPage from "../Page/ErrorPage";
 import MyJoinedClasses from "../Page/Dashboard/DashBoardContent/CommonComponents/MyJoinedClasses";
 import AddForums from "../Page/Dashboard/DashBoardContent/Forums/AddForums";
+import ForumPage from "../Page/ForumPage/ForumPage";
+import ForumDetails from "../Page/ForumPage/ForumDetails";
+import JoinedStudents from "../Page/Dashboard/DashBoardContent/TrainerComponents/JoinedStudents";
+import MyPostedBlog from "../Page/Dashboard/DashBoardContent/CommonComponents/MyPostedBlog";
 
 
+
+ 
   export const router =createBrowserRouter([
     {
         path:'/',
@@ -91,6 +97,14 @@ import AddForums from "../Page/Dashboard/DashBoardContent/Forums/AddForums";
             {
                 path:'/paymentPage',
                 element:<PrivateRoute><PaymentCart></PaymentCart></PrivateRoute> 
+            },
+            {
+                path:'/forumPage',
+                element:<PrivateRoute> <ForumPage></ForumPage></PrivateRoute>
+            },
+            {
+                path:'/forum/:id',
+              element:  <PrivateRoute><ForumDetails></ForumDetails></PrivateRoute>
             }
         ]
     },
@@ -98,7 +112,6 @@ import AddForums from "../Page/Dashboard/DashBoardContent/Forums/AddForums";
         path:'/dashboard',
         element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute> ,
         children:[
-            
             {
                 path:'allUser',
                 
@@ -106,7 +119,7 @@ import AddForums from "../Page/Dashboard/DashBoardContent/Forums/AddForums";
             },
             {
                 path:'allPendingTrainer',
-                element:<AllPendingTrainer></AllPendingTrainer>
+                element: <PrivateRoute><AllPendingTrainer></AllPendingTrainer></PrivateRoute> 
             },
             {
                 path:'allVerifiedTrainer',
@@ -131,6 +144,14 @@ import AddForums from "../Page/Dashboard/DashBoardContent/Forums/AddForums";
             {
                 path:'addForums',
                 element:<PrivateRoute><AddForums></AddForums></PrivateRoute>
+            },
+            {
+                path:'joinedStudents/:id',
+                element:<PrivateRoute><JoinedStudents></JoinedStudents></PrivateRoute>
+            },
+            {
+                path:'myPostedBlog',
+                element:<PrivateRoute><MyPostedBlog></MyPostedBlog></PrivateRoute>
             }
         ]
     }

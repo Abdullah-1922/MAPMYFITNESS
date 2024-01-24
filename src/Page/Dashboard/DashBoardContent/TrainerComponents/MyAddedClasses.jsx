@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-
+import { BsFillPeopleFill } from "react-icons/bs";
 
 import TitleText from '../../../../Components/Shared/SmallComponents/Title/Title';
-import { MdDelete } from 'react-icons/md';
+
 
 
 
@@ -16,6 +16,11 @@ const MyAddedClasses = () => {const navigate = useNavigate();
  
 
  const  { MyAddedClasses} = useGetMyAddedClass(user?.email);
+
+
+ const handleJoinedStudents=id=>{
+  navigate(`/dashboard/joinedStudents/${id}`)
+ }
 
   return (
   
@@ -45,6 +50,11 @@ const MyAddedClasses = () => {const navigate = useNavigate();
                     data +
                     (index < singleClass?.classDays?.length - 1 ? ', ' : '.'),
                 )}
+              </p>
+              <p className='text-lg font-bold'>Student joined: 
+               <span> {
+                  singleClass?.classStudent?.length
+                }</span>
               </p>
 
               <p className='font-bold text-lg'>
@@ -80,14 +90,14 @@ const MyAddedClasses = () => {const navigate = useNavigate();
                   </span>
                 </button>
                 <button
-                  onClick={() => navigate(`/class/${singleClass?._id}`)}
+                  onClick={() => handleJoinedStudents(singleClass?._id)}
                   className='group relative inline-flex items-center overflow-hidden rounded bg-red-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500'>
                   <span className='absolute -start-full transition-all group-hover:start-4'>
-                    <MdDelete className='text-2xl ' />
+                    <BsFillPeopleFill className='text-2xl ' />
                   </span>
 
                   <span className='text-sm  font-bold transition-all group-hover:ms-4'>
-                    Delete
+                    Students
                   </span>
                 </button>
               </div>

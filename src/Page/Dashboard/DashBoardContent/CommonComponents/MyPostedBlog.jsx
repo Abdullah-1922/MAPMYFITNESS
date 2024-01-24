@@ -1,55 +1,23 @@
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../Provider/AuthContextProvider';
-import { Link, useNavigate } from 'react-router-dom';
-import useLoadBlog from '../../Hooks/useLoadBlog';
-import { MdArrowRightAlt } from 'react-icons/md';
-import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
-import '../../Components/Shared/SharedCss/Scrollbar.css';
-import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from "react";
+import {  myBlog } from "../../../../API/BlogApi";
+import useAuth from "../../../../Hooks/useAuth";
+import { MdArrowRightAlt } from "react-icons/md";
+import DisplayTotalLikes from "../../../../Components/Shared/DisplayTotalLikes";
+import TitleText from "../../../../Components/Shared/SmallComponents/Title/Title";
+import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
-import './BlogCard.css';
-import axiosPublic from '../../API/axiosPublic';
 
-import DisplayTotalLikes from '../../Components/Shared/DisplayTotalLikes';
-const Blog = () => {
-  const [count, setCount] = useState('');
-  useEffect(() => {
-    axiosPublic.get('/blogsCount').then((res) => setCount(res.data.count));
-  }, []);
-  const formattedDate = (date) => {
-    return new Date(date).toLocaleDateString('en-GB');
-  };
-
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemPerPage = 6;
-  const numberOfPages = Math.ceil(count / itemPerPage);
-  console.log(count);
-
-  const pages = [...Array(numberOfPages).keys()];
-  const { blogs, refetch, isLoading } = useLoadBlog({
-    page: currentPage,
-    size: itemPerPage,
-  });
-  // eslint-disable-next-line no-unused-vars
-  const { user } = useContext(AuthContext);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    refetch();
-  }, [currentPage, refetch]);
-
-  const navigate = useNavigate();
-  console.log(isLoading);
-  if (isLoading) {
-    return (
-      <div className='flex flex-col gap-4 w-52'>
-        <div className='skeleton h-32 w-full'></div>
-        <div className='skeleton h-4 w-28'></div>
-        <div className='skeleton h-4 w-full'></div>
-        <div className='skeleton h-4 w-full'></div>
-      </div>
-    );
-  }
- console.log(blogs);
+const MyPostedBlog = () => {
+    const {user}=useAuth()
+    const [myBlogs,setMyBlogs]=useState([])
+    useEffect(()=>{
+  myBlog(user?.email).then(data=>setMyBlogs(data))
+    },[user?.email])
+    const formattedDate = (date) => {
+        return new Date(date).toLocaleDateString('en-GB');
+      };
+      const navigate=useNavigate()
   return (
     <div className='mb-20 -mt-10'>
       <Helmet>
@@ -64,7 +32,7 @@ const Blog = () => {
         </Link>
       </div>
       <div className='grid   px-5 md:px-2 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
-        {blogs.map((blog) => (
+        {myBlogs.map((blog) => (
           <div key={blog?._id} className='h-[600px]  dark:border dark:border-white  overflow-y-hidden  w-full '>
             <div className='overflow-x-hidden group group-hover:scale-90 transition relative cardBg  overflow-y-hidden  px-8 py-4 rounded-2xl '>
               <div className='flex justify-between pb-1 items-center '>
@@ -141,46 +109,10 @@ const Blog = () => {
         ))}
       </div>
 
-      <div className='mt-10 w-fit mx-auto'>
-        <button
-          onClick={() => {
-            if (currentPage > 0) {
-              setCurrentPage(currentPage - 1);
-            }
-          }}
-          className='btn btn-sm bg-slate-400'>
-          Prev
-        </button>
-        {pages?.map((page) => (
-          <button
-            onClick={() => setCurrentPage(page)}
-            className={`btn mx-1 btn-sm ${
-              page == currentPage ? 'bg-orange-300' : ''
-            }`}
-            key={page}>
-            {page + 1}
-          </button>
-        ))}
-        <button
-          onClick={() => {
-            if (currentPage != numberOfPages - 1) {
-              setCurrentPage(currentPage + 1);
-            }
-          }}
-          className='btn btn-sm bg-slate-400'>
-          Next
-        </button>
-      </div>
-      {isLoading && (
-        <div className='flex flex-col gap-4 w-52'>
-          <div className='skeleton h-32 w-full'></div>
-          <div className='skeleton h-4 w-28'></div>
-          <div className='skeleton h-4 w-full'></div>
-          <div className='skeleton h-4 w-full'></div>
-        </div>
-      )}
+      
+      
     </div>
   );
 };
 
-export default Blog;
+export default MyPostedBlog;

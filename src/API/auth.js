@@ -1,3 +1,4 @@
+
 import axiosSecure from "./axiosSecure"
 
 export const getToken = async email => {
@@ -9,5 +10,11 @@ export const getToken = async email => {
 // Clear token from browser
 export const clearCookie = async () => {
   const { data } = await axiosSecure.get('/logout')
+  return data
+}
+//get login user 
+export const getLoginUser = async () => {
+  
+  const { data } = await axiosSecure.get('/user')
   return data
 }

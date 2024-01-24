@@ -13,6 +13,12 @@ const CommonSidebar = () => {
         </p>
         <FaHome className=' text-2xl text-black' />
       </NavLink>
+      <NavLink className='flex ml-6 gap-3 items-center' to={'/dashboard/myPostedBlog'}>
+        <p className='dark:text-black text-center uppercase text-black  font-bold'>
+          My Posts
+        </p>
+        {/* <FaHome className=' text-2xl text-black' /> */}
+      </NavLink>
       <NavLink className='flex ml-6 gap-3 items-center' to={'/blog'}>
         <p className='dark:text-black text-center uppercase text-black  font-bold'>
           Community Blog

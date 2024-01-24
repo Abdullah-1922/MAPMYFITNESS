@@ -113,7 +113,7 @@ const PaymentCart = () => {
               </li>
 
               <li className='flex items-center gap-1'>
-                {svg}
+                {nonSvg}
                 <span className='text-gray-700 dark:text-white'>
                   Phone support
                 </span>
@@ -178,14 +178,14 @@ const PaymentCart = () => {
               </li>
 
               <li className='flex items-center gap-1'>
-                {svg}
+                {nonSvg}
                 <span className='text-gray-700 dark:text-white'>
                   Phone support
                 </span>
               </li>
 
               <li className='flex items-center gap-1'>
-                {nonSvg}
+                {svg}
                 <span className='text-gray-700 dark:text-white'>
                   Premium Community access
                 </span>
