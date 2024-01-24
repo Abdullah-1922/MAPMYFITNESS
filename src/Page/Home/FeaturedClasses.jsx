@@ -3,30 +3,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import { FaArrowRight } from "react-icons/fa6";
-import Swal from "sweetalert2";
+
+
 import TitleText from "../../Components/Shared/SmallComponents/Title/Title";
+import { getHomeClasses } from "../../API/classesApi";
 
 const FeaturedClasses = () => {
-  const [classes, setClasses] = useState([]);
 
-  useEffect(() => {
-    fetch("FeaturedClasses.json")
-      .then((res) => res.json())
-      .then((data) => setClasses(data));
-  }, []);
-  const handleShowDetails=item=>{
-    Swal.fire({
-        title: `${item?.classType}`,
-        text: `${item?.headline}`,
-        html: `${item?.description}`,
-        imageUrl: `${item?.img}`,
-        imageWidth: 400,
-        imageHeight: 400,
-        imageAlt: "Custom image",
-        confirmButtonText:'back'
-      });
-  }
+
+ 
+
+  const [homeClasses, setHomeClasses] = useState()
+  useEffect(()=>{
+    getHomeClasses().then(res=>setHomeClasses(res))
+  },[])
+  
   return (
     <div className="pb-10">
         
@@ -54,23 +45,44 @@ const FeaturedClasses = () => {
         }}
       >
        
-        {classes?.map((item) => (
-          <SwiperSlide key={item.classType}>
+        {homeClasses?.map((singleClass) => (
+          <SwiperSlide key={singleClass.classType}>
           
-            <div className="fitness-card   relative overflow-hidden rounded-lg ">
-              <div
-                className="card-bg   h-[600px]  bg-cover bg-center"
-                style={{ backgroundImage: `url(${item?.img})` }}
-              >
-                  <div className="bg-black w-full h-full bg-opacity-20"></div>
+          <div
+            // key={index}
+            className='card overflow-hidden h-[660px] dark:bg-slate-700 bg-slate-200 shadow-xl'>
+            <div className='h-[400px] '>
+              <img
+                className='w-full h-full object-cover '
+                src={singleClass?.classImage}
+                alt='Shoes'
+              />
+            </div>
+            <div className=' space-y-1 mt-2 p-5 '>
+              <p className='  font-medium'>
+                Trainer : {singleClass?.trainerName}
+              </p>
+              <p className=' font-medium'>Topic : {singleClass?.classTopic}</p>
+              <p className=' font-medium'>
+                Days :
+                {singleClass?.classDays?.map(
+                  (data, index) =>
+                    data +
+                    (index < singleClass?.classDays?.length - 1 ? ', ' : '.'),
+                )}
+              </p>
+
+              <p className='font-bold text-lg'>
+                Title : {singleClass?.classTitle?.slice(0, 50)}
+              </p>
+              <div className='card-actions justify-end'>
+                <div className='badge badge-outline'>
+                  {singleClass.classPrice}
+                </div>
               </div>
-            
-              <div className="card-content text-white absolute   justify-center items-center top-[60%] left-[30%] text-center ">
-                <h3 className="text-2xl  my-3 font-black">{item?.classType}</h3>
-               
-                <button onClick={()=>handleShowDetails(item)} className="btn hover:bg-slate-400 hover:border-none hover:scale-110">MORE INFO <FaArrowRight className="text-xl"></FaArrowRight></button>
              
-            </div></div>
+            </div>
+          </div>
           </SwiperSlide>
         ))}
       </Swiper>

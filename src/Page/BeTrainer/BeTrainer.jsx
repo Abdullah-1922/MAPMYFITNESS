@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Select from 'react-select';
 
@@ -14,6 +14,9 @@ import { useNavigate } from 'react-router-dom';
 
 const animatedComponents = makeAnimated();
 const BeTrainer = () => {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const { user } = useAuth();
   const {loginUser}=useGetLoginUser()
   const [skills, setSkill] = useState([]);
@@ -23,10 +26,10 @@ const BeTrainer = () => {
   const optionsDays = [
     { value: 'Saturday', label: 'Saturday' },
     { value: 'Sunday', label: 'Sunday' },
-    // { value: 'Monday', label: 'Monday' },
+  
     { value: 'Tuesday', label: 'Tuesday' },
     { value: 'Wednesday', label: 'Wednesday' },
-    // { value: 'Thursday', label: 'Thursday' },
+    
     { value: 'Friday', label: 'Friday' },
   ];
   const bdTimeZone = 'Asia/Dhaka';
@@ -81,6 +84,11 @@ const BeTrainer = () => {
       });
     }
     const availableTimeDay = form.availableTimeDay.value;
+    if(availableTimeDay > 10){
+      toast.error("You can't select more than 10 hours per day!");
+      setLoading(false);
+      return;
+    }
     const availableTimeWeek = selectedDays || [];
     const skill = skills;
     const ImageFile = form.ImageFile.files[0];

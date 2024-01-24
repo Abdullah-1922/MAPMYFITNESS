@@ -4,10 +4,10 @@ import TitleText from "../../Components/Shared/SmallComponents/Title/Title";
 import { useEffect } from "react";
 
 const TrainerClasses = () => {
-const params =useParams()
-const  { trainerClasses:classes }=useGetTrainerClass(params?.email)
+const {id} =useParams()
+const  { trainerClasses:classes }=useGetTrainerClass(id)
 const navigate =useNavigate()
-console.log(params);
+
 console.log(classes);
 useEffect(()=>{
   window.scrollTo(0, 0);

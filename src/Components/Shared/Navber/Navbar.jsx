@@ -118,7 +118,7 @@ const Navbar = () => {
                   className='text-3xl mx-3'
                   onClick={changeTheme}></MdModeNight>
               ) : (
-                <FiSun className='text-3xl mx-3' onClick={changeTheme}></FiSun>
+                <FiSun className='text-3xl text-white  mx-3' onClick={changeTheme}></FiSun>
               )}
             </button>
             {user ? (

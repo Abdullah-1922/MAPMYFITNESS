@@ -7,7 +7,7 @@ import useAuth from '../../../../Hooks/useAuth';
 import Loader from '../../../../Components/Shared/SmallComponents/Loader';
 import TitleText from '../../../../Components/Shared/SmallComponents/Title/Title';
 
-import { getTrainer } from '../../../../API/TrainerApi';
+import { getLoginTrainer } from '../../../../API/TrainerApi';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { toast } from 'react-toastify';
@@ -19,7 +19,7 @@ const AddClasses = () => {
   const { user: loginUser } = useAuth();
   const [user, setUser] = useState({});
   useEffect(() => {
-    getTrainer(loginUser?.email).then((res) => setUser(res));
+    getLoginTrainer(loginUser?.email).then((res) => setUser(res));
   }, [loginUser]);
 
   console.log(user);

@@ -26,6 +26,8 @@ import TrainerClasses from "../Page/Trainer/TrainerClasses";
 import MyAddedClasses from "../Page/Dashboard/DashBoardContent/TrainerComponents/MyAddedClasses";
 import PaymentCart from "../Page/PaymentPage/PaymentCart";
 import ErrorPage from "../Page/ErrorPage";
+import MyJoinedClasses from "../Page/Dashboard/DashBoardContent/CommonComponents/MyJoinedClasses";
+import AddForums from "../Page/Dashboard/DashBoardContent/Forums/AddForums";
 
 
   export const router =createBrowserRouter([
@@ -76,19 +78,19 @@ import ErrorPage from "../Page/ErrorPage";
             },
             {
                 path:'/trainerPage',
-                element:<PrivateRoute><TrainerPage></TrainerPage></PrivateRoute>
+                element:<TrainerPage></TrainerPage>
             },
             {
-                path:'/trainer/:email',
+                path:'/trainer/:id',
                 element:<PrivateRoute><TrainerDetails></TrainerDetails></PrivateRoute>
             },
             {
-                path:'/trainerClasses/:email',
+                path:'/trainerClasses/:id',
                 element:<PrivateRoute><TrainerClasses></TrainerClasses></PrivateRoute>
             },
             {
                 path:'/paymentPage',
-                element:<PaymentCart></PaymentCart>
+                element:<PrivateRoute><PaymentCart></PaymentCart></PrivateRoute> 
             }
         ]
     },
@@ -121,6 +123,14 @@ import ErrorPage from "../Page/ErrorPage";
             {
                 path:'myAddedClasses',
                 element:<MyAddedClasses></MyAddedClasses>
+            },
+            {
+                path:'myJoinedClasses',
+                element:<PrivateRoute><MyJoinedClasses></MyJoinedClasses></PrivateRoute>
+            },
+            {
+                path:'addForums',
+                element:<PrivateRoute><AddForums></AddForums></PrivateRoute>
             }
         ]
     }

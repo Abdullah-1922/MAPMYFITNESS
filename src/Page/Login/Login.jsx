@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthContextProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -6,6 +6,11 @@ import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
 import { Helmet } from "react-helmet-async";
 const Login = () => {
+
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const {
     register,
     handleSubmit,
@@ -16,7 +21,7 @@ const Login = () => {
   const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-
+ 
   const from = location.state?.from?.pathname || "/";
  console.log(from);
   const onSubmit = (data) => {

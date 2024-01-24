@@ -6,12 +6,15 @@ import Swal from 'sweetalert2';
 
 import SocialLogin from '../Login/SocialLogin';
 import useAuth from '../../Hooks/useAuth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { imageUpload } from '../../API/ImageApi';
 
 import axiosPublic from '../../API/axiosPublic';
 
 const Register = () => {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const { createUser, updateUserProfile, logOut } = useAuth();
   const [selectedImage, setSelectedImage] = useState('');
   const {

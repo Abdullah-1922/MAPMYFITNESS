@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useGetUSerStatus } from '../../Hooks/useGetUserStatus';
 import { useGetLoginUser } from '../../Hooks/useGetLoginUser';
+import { toast } from 'react-toastify';
 
 const ClassDetails = () => {
   const params = useParams();
@@ -22,15 +23,47 @@ const ClassDetails = () => {
     console.log(id);
     console.log(price);
     if (price === 'free') {
-      console.log('corse added successfully');
+    
        
-      joinClasses(loginUser?.email,id)
+      joinClasses(loginUser?.email,id).then(data=>{
+        if(data === 'already joined in the class'){
+          navigate('/dashboard/myJoinedClasses')
+        toast.error('You already add the class')
+        }
+        if(data.modifiedCount === 1){
+          toast.success('Join the class successfully')
+          navigate('/dashboard/myJoinedClasses')
+        }
+        console.log(data);
+      })
       return;
     } else if (price === 'silver' && (status === 'silver' || status ==='diamond')) {
-      console.log('corse added successfully');
+             
+      joinClasses(loginUser?.email,id).then(data=>{
+        if(data === 'already joined in the class'){
+          navigate('/dashboard/myJoinedClasses')
+        toast.error('You already add the class')
+        }
+        if(data.modifiedCount === 1){
+          toast.success('Join the class successfully')
+          navigate('/dashboard/myJoinedClasses')
+        }
+        console.log(data);
+      })
       return;
     } else if (price === 'diamond' && status === 'diamond') {
-      console.log('corse added successfully');
+          
+      joinClasses(loginUser?.email,id).then(data=>{
+        if(data === 'already joined in the class'){
+          navigate('/dashboard/myJoinedClasses')
+        toast.error('You already add the class')
+        }
+        if(data.modifiedCount === 1){
+          toast.success('Join the class successfully')
+          navigate('/dashboard/myJoinedClasses')
+        }
+        console.log(data);
+      })
       return;
     } else {
       navigate('/paymentPage');
@@ -119,8 +152,8 @@ const ClassDetails = () => {
               </svg>
             </span>
 
-            <span className='text-sm font-medium transition-all group-hover:ms-4'>
-              Join
+            <span className='text-sm uppercase font-medium transition-all group-hover:ms-4'>
+              ADD This class
             </span>
           </button>
         </div>

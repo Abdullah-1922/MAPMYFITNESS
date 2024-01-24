@@ -4,13 +4,14 @@ import { getTrainer } from '../../API/TrainerApi';
 import { Helmet } from 'react-helmet-async';
 
 const TrainerDetails = () => {
-  const param = useParams();
+  const {id} = useParams(); 
+  const navigate = useNavigate();
   const [trainerInfo, setTrainerInfo] = useState({});
   useEffect(() => {
-    getTrainer(param.email).then((res) => setTrainerInfo(res));
-  }, [param.email]);
+    getTrainer(id).then((res) => setTrainerInfo(res));
+  }, [id]);
   console.log(trainerInfo);
-  const navigate = useNavigate();
+ 
   return (
     <div>
       <Helmet>
@@ -63,7 +64,7 @@ const TrainerDetails = () => {
             </div>
 
             <button
-             onClick={() => navigate(`/trainerClasses/${trainerInfo.email}`)}
+             onClick={() => navigate(`/trainerClasses/${trainerInfo?._id}`)}
               className='mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400'>
               See All Classes
             </button>

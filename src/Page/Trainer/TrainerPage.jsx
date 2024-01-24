@@ -2,9 +2,36 @@ import { useNavigate } from 'react-router-dom';
 import TitleText from '../../Components/Shared/SmallComponents/Title/Title';
 import { useGetVerifiedTrainer } from '../../Hooks/useGetVerifiedTrainer';
 import {Helmet} from 'react-helmet-async'
+// import { useGetLoginUser } from '../../Hooks/useGetLoginUser';
+// import { toast } from 'react-toastify';
+// import Swal from 'sweetalert2';
 const TrainerPage = () => {
   const { trainers } = useGetVerifiedTrainer();
   const navigate =useNavigate()
+
+ 
+  const handleGoToBecomeTrainer=()=>{
+  //   if(!loginUser){
+  //     Swal.fire({
+  //       title: "You are not login user ",
+  //       text: "You have to login for apply",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#3085d6",
+  //       cancelButtonColor: "#d33",
+  //       cancelButtonText:'Back',
+  //       confirmButtonText: "Go To Login"
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //       navigate('/login')
+  //       }
+  //     });
+  //   }
+  //  if(loginUser.trainerStatus==='verified' || loginUser.trainerStatus==='pending'){
+  //   return toast('You are already a trainer')
+  //  }
+    navigate('/addTrainer')
+  }
   console.log(trainers);
   return (
     <div className='w-[90%] py-10 mx-auto'>
@@ -35,7 +62,7 @@ const TrainerPage = () => {
               <p className='text-lg font-semibold'>Available slot : {trainer?.availableTimeDay}  </p>
               <div className='card-actions justify-center'>
               <button
-                  onClick={() => navigate(`/trainer/${trainer?.email}`)}
+                  onClick={() => navigate(`/trainer/${trainer?._id}`)}
                   className='group relative inline-flex items-center overflow-hidden rounded bg-indigo-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500'>
                   <span className='absolute -start-full transition-all group-hover:start-4'>
                     <svg
@@ -61,6 +88,9 @@ const TrainerPage = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className=' pt-10 flex justify-end '>
+        <button onClick={handleGoToBecomeTrainer} className='btn hover:bg-blue-700 font-bold  bg-red-500 text-white uppercase'>Become A Trainer</button>
       </div>
     </div>
   );

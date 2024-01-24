@@ -21,7 +21,7 @@ const CommonSidebar = () => {
       </NavLink>
       <NavLink
         className='flex ml-6 gap-3 items-center'
-        to={'/userJoinedClasses'}>
+        to={'/dashboard/myJoinedClasses'}>
         <p className='dark:text-black text-center uppercase text-black  font-bold'>
           My joined classes
         </p>

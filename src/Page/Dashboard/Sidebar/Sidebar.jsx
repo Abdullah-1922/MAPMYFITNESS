@@ -1,11 +1,13 @@
 
 import useAuth from '../../../Hooks/useAuth';
 
-
+import { MdForum } from "react-icons/md";
 import AdminSidebar from './AdminSidebar';
 import CommonSidebar from './CommonSidebar';
 import { useGetLoginUser } from '../../../Hooks/useGetLoginUser';
 import TrainerSidebar from './TrainerSidebar';
+import { NavLink } from 'react-router-dom';
+
 
 
 const Sidebar = () => {
@@ -34,6 +36,10 @@ const Sidebar = () => {
        {
         userInfo?.trainerStatus ==='verified' && <TrainerSidebar></TrainerSidebar>
        }
+        <NavLink className={'flex gap-3 items-center ml-6'} to={"/dashboard/addForums"}>
+        <p className=" text-center uppercase text-black  font-bold">ADD Premium forum </p><MdForum
+         className=" text-2xl text-black" />
+      </NavLink>
     </div>: ''
       }
   

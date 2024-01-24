@@ -27,7 +27,7 @@ const ShowNewsLetterSubscribers = () => {
     </thead>
     <tbody>
         {
-          newsLetterSubscribers.map((subscriber,index)=>{
+          newsLetterSubscribers?.map((subscriber,index)=>{
             return(
               <tr key={subscriber._id}>
         <th>{index+1}</th>
