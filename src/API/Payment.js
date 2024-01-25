@@ -19,3 +19,8 @@ export const updateUserStatus=async(userStatusInfo)=>{
 
 
 }
+//get all payment users
+export const getAllPaymentUsers=async()=>{
+    const {data}=await axiosSecure.get('/getAllPaymentUsers')
+    return data
+}

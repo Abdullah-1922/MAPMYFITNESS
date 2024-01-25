@@ -43,7 +43,7 @@ const AddForums = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate('/blog')
+      navigate('/forumPage')
       setSelectedImage('')
       e.target.reset();
     }

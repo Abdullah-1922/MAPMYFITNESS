@@ -2,8 +2,8 @@ import { NavLink } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import { TbSocial } from 'react-icons/tb';
 import { CiCirclePlus } from 'react-icons/ci';
-import { BiAnchor } from "react-icons/bi";
-import { BsFilePost } from "react-icons/bs";
+import { BiAnchor } from 'react-icons/bi';
+import { BsFilePost } from 'react-icons/bs';
 const CommonSidebar = () => {
   return (
     <div className='flex flex-col  gap-4'>
@@ -13,7 +13,9 @@ const CommonSidebar = () => {
         </p>
         <FaHome className=' text-2xl text-black' />
       </NavLink>
-      <NavLink className='flex ml-6 gap-3 items-center' to={'/dashboard/myPostedBlog'}>
+      <NavLink
+        className='flex ml-6 gap-3 items-center'
+        to={'/dashboard/myPostedBlog'}>
         <p className='dark:text-black text-center uppercase text-black  font-bold'>
           My Posts
         </p>
@@ -33,19 +35,21 @@ const CommonSidebar = () => {
         </p>
         <BiAnchor className=' text-2xl text-black' />
       </NavLink>
-      <NavLink
-        className='flex ml-6 gap-3 items-center'
-        to={'/addBlog'}>
+      <NavLink className='flex ml-6 gap-3 items-center' to={'/addBlog'}>
         <p className='dark:text-black text-center uppercase text-black  font-bold'>
           ADD Blog
         </p>
         <CiCirclePlus className=' text-2xl text-black' />
       </NavLink>
-      <NavLink
-        className='flex ml-6 gap-3 items-center'
-        to={'/addTrainer'}>
+      <NavLink className='flex ml-6 gap-3 items-center' to={'/addTrainer'}>
         <p className='dark:text-black text-center uppercase text-black  font-bold'>
           Apply For trainer
+        </p>
+        <BsFilePost className=' text-2xl text-black' />
+      </NavLink>
+      <NavLink className='flex ml-6 gap-3 items-center' to={'/dashboard/recommendedClasses'}>
+        <p className='dark:text-black text-center uppercase text-black  font-bold'>
+          Recommended classes
         </p>
         <BsFilePost className=' text-2xl text-black' />
       </NavLink>

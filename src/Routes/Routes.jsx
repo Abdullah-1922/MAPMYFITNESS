@@ -32,6 +32,9 @@ import ForumPage from "../Page/ForumPage/ForumPage";
 import ForumDetails from "../Page/ForumPage/ForumDetails";
 import JoinedStudents from "../Page/Dashboard/DashBoardContent/TrainerComponents/JoinedStudents";
 import MyPostedBlog from "../Page/Dashboard/DashBoardContent/CommonComponents/MyPostedBlog";
+import AllPaymentUsers from "../Page/Dashboard/DashBoardContent/AdminComponents/AllPaymentUsers";
+import AdminStates from "../Page/Dashboard/DashBoardContent/AdminComponents/AdminStates";
+import RecommendedClasses from "../Page/Dashboard/DashBoardContent/CommonComponents/RecommendedClasses";
 
 
 
@@ -152,6 +155,18 @@ import MyPostedBlog from "../Page/Dashboard/DashBoardContent/CommonComponents/My
             {
                 path:'myPostedBlog',
                 element:<PrivateRoute><MyPostedBlog></MyPostedBlog></PrivateRoute>
+            },
+            {
+                path:'allPremiumUsers',
+                element:<PrivateRoute><AllPaymentUsers></AllPaymentUsers></PrivateRoute>
+            },
+            {
+                path:'adminStates',
+                element:<PrivateRoute><AdminStates></AdminStates></PrivateRoute>
+            },
+            {
+                path:'recommendedClasses',
+                element:<PrivateRoute><RecommendedClasses></RecommendedClasses></PrivateRoute>
             }
         ]
     }

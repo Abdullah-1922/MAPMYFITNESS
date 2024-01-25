@@ -18,6 +18,9 @@ const MyPostedBlog = () => {
         return new Date(date).toLocaleDateString('en-GB');
       };
       const navigate=useNavigate()
+      if(myBlogs.length===0){
+        return <div className='text-center text-2xl my-20'>No Blogs Found</div>
+      }
   return (
     <div className='mb-20 -mt-10'>
       <Helmet>
